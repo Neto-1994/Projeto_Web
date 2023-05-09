@@ -14,7 +14,7 @@ async function connect() {
     console.log("Conectou no banco de dados..");
     return connection;
 }
-/*
+
 async function selectCustomers(nome, senha) {
     console.log("Iniciou o sql..");
     const conn = await connect();
@@ -34,17 +34,17 @@ async function selectCustomers(nome, senha) {
             }
         } else {
             console.log("Estou no else do usuario..");
-            reject('Usuário não encontrado');
+            reject('Usuario não encontrado');
         }
     });
 };
-*/
+/*
 async function selectCustomers(){
     const conn = await connect();
     const [rows] = await conn.query("SELECT * FROM cadastros;");
     return rows;
 }
-
+*/
 async function insertCustomer(customer) {
     const conn = await connect();
     const sql = ("INSERT INTO cadastros(Nome,Senha) VALUES (?,?);");
