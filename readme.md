@@ -13,4 +13,5 @@ Framework Node. O Express oferece soluções para: Gerenciar requisições de di
 Instalação do nodemon, para atualização automático do projeto..
 *** npm i nodemon
 
-Adaptar todo o projeto com o express...
+Incluir bootstrap via CDN no projeto, por meio do arquivo html..
+
