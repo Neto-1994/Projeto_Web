@@ -38,25 +38,26 @@
 
 
   <!-- Custom styles for this template -->
-  <link href="./public/css/estilopagina.css" rel="stylesheet">
+  <link href="../public/css/estilopagina.css" rel="stylesheet">
 </head>
 
 <body>
   <header class="p-1 mb-1 border-bottom" style="background-color: #068272;">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
       <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-        <img src="./public/images/Acqua.png" class="bi me-2" width="150" height="50" role="img" />
+        <img src="../public/images/Acqua.png" class="bi me-2" width="150" height="50" role="img" />
       </a>
       <div class="col-lg-auto me-lg-auto justify-content-center mb-md-0 text1">
         <h2>Bem vindo</h2>
       </div>
+      <label for="usuario" class="label1"><%= nome %></label>
       <div class="dropdown text-end">
         <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
           aria-expanded="false">
           <img src="https://github.com/Neto-1994.png" width="32" height="32" class="rounded-circle">
         </a>
         <ul class="dropdown-menu text-small">
-<!--
+          <!--
           <li><a class="dropdown-item" href="#">New project...</a></li>
           <li><a class="dropdown-item" href="#">Settings</a></li>
           <li><a class="dropdown-item" href="#">Profile</a></li>
@@ -64,7 +65,7 @@
             <hr class="dropdown-divider">
           </li>
 -->
-          <li><a class="dropdown-item" href="./index.html">Sign out</a></li>
+          <li><a class="dropdown-item" href="../views/index.html">Sign out</a></li>
         </ul>
       </div>
     </div>
@@ -82,12 +83,16 @@
           </button>
           <div class="collapse" id="consistencia-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Alteração Dados</a></li>
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Dados de Apoio</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Alteração Dados</a>
+              </li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Dados de Apoio</a>
+              </li>
               <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">FLU</a></li>
               <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Histórico</a></li>
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Limnimétrica</a></li>
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Perfil Transversal</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Limnimétrica</a>
+              </li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Perfil
+                  Transversal</a></li>
               <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">PLU</a></li>
             </ul>
           </div>
@@ -219,13 +224,18 @@
           </button>
           <div class="collapse" id="visualizacao-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Acompanhamento</a></li>
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Funcionamento PCD</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Acompanhamento</a>
+              </li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Funcionamento
+                  PCD</a></li>
               <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Dados</a></li>
               <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">FTP</a></li>
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Mapa das Estações</a></li>
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Qualidade dos Dados</a></li>
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Situação das Estações</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Mapa das
+                  Estações</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Qualidade dos
+                  Dados</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Situação das
+                  Estações</a></li>
             </ul>
           </div>
         </li>
@@ -240,9 +250,9 @@
 
       <a href="/"
         class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-        <img src="./public/images/Acqua.png" class="bi me-2" width="150" height="50" />
+        <img src="../public/images/Acqua.png" class="bi me-2" width="150" height="50" />
       </a>
-<!--
+      <!--
       <ul class="nav col-md-4 justify-content-end">
         <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>

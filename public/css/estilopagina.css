@@ -20,7 +20,7 @@ html {
   Página
 */
 main {
-  height: 90vh;
+  height: 100vh;
   height: -webkit-fill-available;
   max-height: 100vh;
   overflow-x: auto;
@@ -75,6 +75,10 @@ main {
 }
 
 .text1 {
-  margin-left: 100px;
+  margin-left: 6rem;
+}
 
+.label1 {
+  margin-right: 1rem;
+  justify-content: center;
 }

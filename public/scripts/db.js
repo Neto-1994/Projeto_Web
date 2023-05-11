@@ -30,11 +30,11 @@ async function selectCustomers(nome, senha) {
                 resolve("Autorizado");
             } else {
                 console.log("Estou no else da senha..");
-                reject("Senha incorreta");
+                reject("Senha");
             }
         } else {
             console.log("Estou no else do usuario..");
-            reject('Usuario nao encontrado');
+            reject("Usuario");
         }
     });
 };

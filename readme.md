@@ -15,3 +15,9 @@ Instalação do nodemon, para atualização automático do projeto..
 
 Incluir bootstrap via CDN no projeto, por meio do arquivo html..
 
+Instalação do express-session para gerenciamento de sessões de acesso..
+*** npm i express-session
+
+Instalação do EJS para trabalhar com a parte dinâmica das páginas e reutilização de códigos..
+*** npm i ejs
+
