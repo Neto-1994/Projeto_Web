@@ -1,8 +1,7 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br" data-bs-theme="auto">
 
 <head>
-  <script src="../assets/js/color-modes.js"></script>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,10 +13,8 @@
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-  <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
   <style>
-    @media (min-width: 768px) {
+    @media (min-width: 500px) {
       .bd-placeholder-img-lg {
         font-size: 3.5rem;
       }
@@ -45,65 +42,62 @@
 </head>
 
 <body>
-    <header class="p-1 mb-1 border-bottom" style="background-color: #068272;">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
-            <img src="./public/images/Acqua.png" class="bi me-2" width="130" height="50" role="img" />
-          </a>
-
-          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-            <li><a href="#" class="nav-link px-2 link-body-emphasis">Inventory</a></li>
-            <li><a href="#" class="nav-link px-2 link-body-emphasis">Customers</a></li>
-            <li><a href="#" class="nav-link px-2 link-body-emphasis">Products</a></li>
-          </ul>
-
-          <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-            <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-          </form>
-
-          <div class="dropdown text-end">
-            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              <img src="https://github.com/Neto-1994.png" alt="mdo" width="32" height="32" class="rounded-circle">
-            </a>
-            <ul class="dropdown-menu text-small">
-              <li><a class="dropdown-item" href="#">New project...</a></li>
-              <li><a class="dropdown-item" href="#">Settings</a></li>
-              <li><a class="dropdown-item" href="#">Profile</a></li>
-              <li>
-                <hr class="dropdown-divider">
-              </li>
-              <li><a class="dropdown-item" href="#">Sign out</a></li>
-            </ul>
-          </div>
-        </div>
-    </header>
+  <header class="p-1 mb-1 border-bottom" style="background-color: #068272;">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+        <img src="./public/images/Acqua.png" class="bi me-2" width="150" height="50" role="img" />
+      </a>
+      <div class="col-lg-auto me-lg-auto justify-content-center mb-md-0 text1">
+        <h2>Bem vindo</h2>
+      </div>
+      <div class="dropdown text-end">
+        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          <img src="https://github.com/Neto-1994.png" width="32" height="32" class="rounded-circle">
+        </a>
+        <ul class="dropdown-menu text-small">
+<!--
+          <li><a class="dropdown-item" href="#">New project...</a></li>
+          <li><a class="dropdown-item" href="#">Settings</a></li>
+          <li><a class="dropdown-item" href="#">Profile</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+-->
+          <li><a class="dropdown-item" href="./index.html">Sign out</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
 
   <main class="d-flex flex-nowrap">
-    <div class="d-flex flex-shrink-0 flex-column p-3" style="width: 250px;">
-        <span class=" fs-5 fw-semibold">Menu</span>
+    <div class="d-flex flex-shrink-0 flex-column p-3 scrollarea" style="width: 250px;">
+      <span class=" fs-5 fw-semibold">Menu</span>
       </a>
       <ul class="list-unstyled ps-0">
         <li class="mb-1">
           <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-            data-bs-toggle="collapse" data-bs-target="#home-collapse" aria-expanded="true">
-            Home
+            data-bs-toggle="collapse" data-bs-target="#consistencia-collapse" aria-expanded="false">
+            Consistência
           </button>
-          <div class="collapse show" id="home-collapse">
+          <div class="collapse" id="consistencia-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
-              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Alteração Dados</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Dados de Apoio</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">FLU</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Histórico</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Limnimétrica</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Perfil Transversal</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">PLU</a></li>
             </ul>
           </div>
         </li>
         <li class="mb-1">
           <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-            data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-            Dashboard
+            data-bs-toggle="collapse" data-bs-target="#dados-collapse" aria-expanded="false">
+            Dados
           </button>
-          <div class="collapse" id="dashboard-collapse">
+          <div class="collapse" id="dados-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
               <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Weekly</a></li>
@@ -114,10 +108,10 @@
         </li>
         <li class="mb-1">
           <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-            data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-            Orders
+            data-bs-toggle="collapse" data-bs-target="#dados-campo-collapse" aria-expanded="false">
+            Dados Campo
           </button>
-          <div class="collapse" id="orders-collapse">
+          <div class="collapse" id="dados-campo-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">New</a></li>
               <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Processed</a></li>
@@ -126,18 +120,112 @@
             </ul>
           </div>
         </li>
-
         <li class="mb-1">
           <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
-            data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
-            Account
+            data-bs-toggle="collapse" data-bs-target="#digitacao-collapse" aria-expanded="false">
+            Digitação
           </button>
-          <div class="collapse" id="account-collapse">
+          <div class="collapse" id="digitacao-collapse">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">New...</a></li>
               <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Profile</a></li>
               <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Settings</a></li>
               <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Sign out</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+            data-bs-toggle="collapse" data-bs-target="#documentos-collapse" aria-expanded="false">
+            Documentos
+          </button>
+          <div class="collapse" id="documentos-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+            data-bs-toggle="collapse" data-bs-target="#estacoes-collapse" aria-expanded="false">
+            Estações
+          </button>
+          <div class="collapse" id="estacoes-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+            data-bs-toggle="collapse" data-bs-target="#fichas-campo-collapse" aria-expanded="false">
+            Fichas Campo
+          </button>
+          <div class="collapse" id="fichas-campo-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+            data-bs-toggle="collapse" data-bs-target="#operacao-collapse" aria-expanded="false">
+            Operação
+          </button>
+          <div class="collapse" id="operacao-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+            data-bs-toggle="collapse" data-bs-target="#recepcao-collapse" aria-expanded="false">
+            Recepção
+          </button>
+          <div class="collapse" id="recepcao-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+            data-bs-toggle="collapse" data-bs-target="#resolucao-collapse" aria-expanded="false">
+            Resolução
+          </button>
+          <div class="collapse" id="resolucao-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Overview</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Updates</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Reports</a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="mb-1">
+          <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
+            data-bs-toggle="collapse" data-bs-target="#visualizacao-collapse" aria-expanded="false">
+            Visualização
+          </button>
+          <div class="collapse" id="visualizacao-collapse">
+            <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Acompanhamento</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Funcionamento PCD</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Dados</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">FTP</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Mapa das Estações</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Qualidade dos Dados</a></li>
+              <li><a href="#" class="link-body-emphasis d-inline-flex text-decoration-none rounded">Situação das Estações</a></li>
             </ul>
           </div>
         </li>
@@ -154,7 +242,7 @@
         class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
         <img src="./public/images/Acqua.png" class="bi me-2" width="150" height="50" />
       </a>
-
+<!--
       <ul class="nav col-md-4 justify-content-end">
         <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
@@ -162,6 +250,7 @@
         <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
         <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
       </ul>
+-->
     </footer>
   </div>
 
