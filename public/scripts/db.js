@@ -34,7 +34,7 @@ async function selectCustomers(nome, senha) {
             }
         } else {
             console.log("Estou no else do usuario..");
-            reject('Usuario não encontrado');
+            reject('Usuario nao encontrado');
         }
     });
 };
