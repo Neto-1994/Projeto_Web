@@ -29,9 +29,9 @@ app.use(session({
     saveUninitialized: false
 }));
 
-// Rotas
 app.get('/', function (req, res) {
     if (req.session.usuario) {
+        console.log(req.session.usuario);
         res.render("pagina", { nome: req.session.usuario });
     } else {
         res.render("index");
@@ -41,8 +41,8 @@ app.get('/', function (req, res) {
 app.post('/', function (req, res) {
     db.selectCustomers(req.body.usuario, req.body.senha)
         .then(retorno => {
-            console.log(retorno);
             if (retorno == "Autorizado") {
+                console.log(retorno);
                 req.session.usuario = req.body.usuario;
                 res.render("pagina", { nome: req.body.usuario });
             } else {
@@ -57,6 +57,15 @@ app.post('/', function (req, res) {
                 res.render("index");
             }
         });
+});
+
+app.get('/sair', function (req, res){
+    req.session.usuario = null;
+    res.redirect('/');
+});
+
+app.post('', function (req, res){
+
 });
 
 // Servidor

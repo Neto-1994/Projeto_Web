@@ -1,3 +1,4 @@
+
 var campos = document.querySelectorAll("[required]");
 
 function ValidarCampo(campo) {
@@ -58,10 +59,4 @@ for (var campo of campos) {
     })
     campo.addEventListener("blur", CustomizarValidacao)
 }
-
-document.querySelector("form").addEventListener("submit", event => {
-    console.log("Formulário enviado..");
-
-    // Depois de concluído apagar linha abaixo..
-    event.preventDefault();
-})
+document.querySelector("form").addEventListener("submit");
