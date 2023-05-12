@@ -294,3 +294,32 @@ a:hover {
     transform: translateY(-50%);
     left: 0;
 }
+
+input ~ label{
+    position: absolute;
+    top: 16px;
+    left: 0;
+    transition: .4s;
+}
+
+input:focus ~ label,
+input:valid ~ label {
+    transform: translateY(-24px);
+    font-size: 0.8rem;
+    letter-spacing: 0.1rem;
+}
+
+span.error {
+    font-family: Poppins-Regular;
+    font-size: 1rem;
+    display:flex;
+    padding: 0;
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+
+span.error.active {
+    border: 0.1rem solid red;
+    padding: 0.4rem;
+}
+

@@ -20,13 +20,15 @@
                     </span>
                     
                     <div class="wrap-input margin-top-35 margin-bottom-35">
-                        <input class="input-form" type="text" name="usuario" autocomplete="off" />
+                        <input required class="input-form" type="text" name="usuario" autocomplete="off" />
                         <span class="focus-input-form" data-placeholder="Usuario"></span>
+                        <span class="error span-error"></span>
                     </div>
 
                     <div class="wrap-input margin-bottom-35">
-                        <input class="input-form" type="password" name="senha" />
+                        <input required class="input-form" type="password" name="senha" />
                         <span class="focus-input-form" data-placeholder="Senha"></span>
+                        <span class="error span-error"></span>
                     </div>
 
                     <div class="container-login-form-btn">
@@ -68,6 +70,7 @@
             });
         }
     </script>
+    <script src="../public/scripts/eventoslogin.js"></script>
 </body>
 
 </html>

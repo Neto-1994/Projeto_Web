@@ -20,9 +20,8 @@ app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, '/views'));
-//app.use(session({ secret: "dsfhjkahdsfkjahsdfkjha" }));
 app.use(session({
-    secret: "testesession",
+    secret: "sessionusuario",
     name: "acesso",
     //store: sessionStore, // connect-mongo session store
     proxy: false,
@@ -34,7 +33,6 @@ app.use(session({
 app.get('/', function (req, res) {
     if (req.session.usuario) {
         res.render("pagina", { nome: req.session.usuario });
-        console.log(req.session.usuario);
     } else {
         res.render("index");
     }
@@ -60,20 +58,6 @@ app.post('/', function (req, res) {
             }
         });
 });
-
-/*
-app.post('/Acqua', function (req, res) {
-    db.selectCustomers(req.body.usuario, req.body.senha)
-        .then(retorno => {
-            console.log(retorno);
-            res.sendFile(__dirname + "/pagina.html");
-        })
-        .catch(erro => {
-            res.write(erro);
-            res.end();
-        });
-});
-*/
 
 // Servidor
 app.listen(porta);
