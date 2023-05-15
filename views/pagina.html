@@ -44,9 +44,9 @@
 <body>
   <header class="p-1 mb-1 border-bottom" style="background-color: #068272;">
     <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 link-body-emphasis text-decoration-none">
+      <span class="d-flex align-items-center mb-2 mb-lg-0">
         <img src="../public/images/Acqua.png" class="bi me-2" width="150" height="50" role="img" />
-      </a>
+      </span>
       <div class="col-lg-auto me-lg-auto justify-content-center mb-md-0 text1">
         <h2>Bem vindo</h2>
       </div>
@@ -54,10 +54,9 @@
         <%= nome %>
       </label>
       <div class="dropdown text-end">
-        <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown"
-          aria-expanded="false">
+        <span class="d-block dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
           <img src="https://github.com/Neto-1994.png" width="32" height="32" class="rounded-circle">
-        </a>
+        </span>
         <ul class="dropdown-menu text-small">
           <!--
           <li><a class="dropdown-item" href="#">New project...</a></li>
@@ -74,9 +73,10 @@
   </header>
 
   <main class="d-flex flex-nowrap">
-    <div class="d-flex flex-shrink-0 flex-column p-3 scrollarea" style="width: 250px;">
-      <span class=" fs-5 fw-semibold">Menu</span>
-      </a>
+    <div class="flex-shrink-0 p-3 scrollarea" style="width: 250px;">
+      <span class="d-flex pb-3 mb-3 border-bottom">
+        <span class=" fs-5 fw-semibold">Menu</span>
+      </span>
       <ul class="list-unstyled ps-0">
         <li class="mb-1">
           <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed"
