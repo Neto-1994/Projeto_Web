@@ -2,86 +2,92 @@
   Zerar estilos
 */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-  }
-  
-  html {
-    height: 100%;
-    height: -webkit-fill-available;
-  }
-  
-  /*
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
+}
+
+html {
+  height: 100%;
+  height: -webkit-fill-available;
+}
+
+/*
     Página
   */
-  main {
-    height: 100vh;
-    height: -webkit-fill-available;
-    max-height: 100vh;
-    overflow-x: auto;
-    overflow-y: hidden;
-  }
-  
-  /*
+main {
+  height: 100vh;
+  height: -webkit-fill-available;
+  max-height: 100vh;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/*
     Utilitários
   */
-  
-  .btn-toggle {
-    padding: .25rem .5rem;
-    font-weight: 600;
-    color: var(--bs-emphasis-color);
-    background-color: transparent;
-  }
-  
-  .btn-toggle:hover,
-  .btn-toggle:focus {
-    color: rgba(var(--bs-emphasis-color-rgb), .85);
-    background-color: var(--bs-tertiary-bg);
-  }
-  
-  .btn-toggle::before {
-    width: 1.25em;
-    line-height: 0;
-    content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
-    transition: transform .35s ease;
-    transform-origin: .5em 50%;
-  }
-  
-  .btn-toggle[aria-expanded="true"] {
-    color: rgba(var(--bs-emphasis-color-rgb), .85);
-  }
-  
-  .btn-toggle[aria-expanded="true"]::before {
-    transform: rotate(90deg);
-  }
-  
-  .btn-toggle-nav a {
-    padding: .1875rem .5rem;
-    margin-top: .125rem;
-    margin-left: 1.25rem;
-  }
-  
-  .btn-toggle-nav a:hover,
-  .btn-toggle-nav a:focus {
-    background-color: var(--bs-tertiary-bg);
-  }
-  
-  .scrollarea {
-    overflow-y: auto;
-  }
-  
-  .text1 {
-    margin-left: 1rem;
-  }
-  
-  .label1 {
-    margin-right: 1rem;
-    justify-content: center;
-  }
-  
+
+.btn-toggle {
+  padding: .25rem .5rem;
+  font-weight: 600;
+  color: var(--bs-emphasis-color);
+  background-color: transparent;
+}
+
+.btn-toggle:hover,
+.btn-toggle:focus {
+  color: rgba(var(--bs-emphasis-color-rgb), .85);
+  background-color: var(--bs-tertiary-bg);
+}
+
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='rgba%280,0,0,.5%29' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+.btn-toggle[aria-expanded="true"] {
+  color: rgba(var(--bs-emphasis-color-rgb), .85);
+}
+
+.btn-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
+.btn-toggle-nav a {
+  padding: .1875rem .5rem;
+  margin-top: .125rem;
+  margin-left: 1.25rem;
+}
+
+.btn-toggle-nav a:hover,
+.btn-toggle-nav a:focus {
+  background-color: var(--bs-tertiary-bg);
+}
+
+.scrollarea {
+  overflow-y: auto;
+}
+
+.text1 {
+  margin-left: 1rem;
+}
+
+.label1 {
+  margin-right: 1rem;
+  justify-content: center;
+}
+
+.themed-grid-col {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  background-color: whitesmoke;
+  border: 1px solid #068272;
+}
