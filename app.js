@@ -59,13 +59,13 @@ app.post('/', function (req, res) {
         });
 });
 
-app.get('/sair', function (req, res){
+app.get('/sair', function (req, res) {
     req.session.usuario = null;
     res.redirect('/');
 });
 
-app.post('', function (req, res){
-
+app.get('/dados', function (req, res) {
+    res.render("Visualizacao_Dados", { nome: req.session.usuario });
 });
 
 // Servidor
