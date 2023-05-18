@@ -68,5 +68,9 @@ app.get('/dados', function (req, res) {
     res.render("Visualizacao_Dados", { nome: req.session.usuario });
 });
 
+app.get('/qualidadedados', function (req, res) {
+    res.render("Qualidade_Dados", { nome: req.session.usuario });
+});
+
 // Servidor
 app.listen(porta);
