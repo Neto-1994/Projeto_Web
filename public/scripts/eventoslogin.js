@@ -1,4 +1,3 @@
-
 var campos = document.querySelectorAll("[required]");
 
 function ValidarCampo(campo) {

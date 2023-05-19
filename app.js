@@ -4,6 +4,7 @@ const session = require('express-session');
 var bodyparser = require('body-parser');
 var path = require('path');
 const db = require("./public/scripts/db.js");
+const dbacqua = require("./public/scripts/tabelaestacao.js")
 
 // Porta
 porta = 3000;
@@ -69,8 +70,13 @@ app.get('/dados', function (req, res) {
 });
 
 app.get('/qualidadedados', function (req, res) {
-    res.render("Qualidade_Dados", { nome: req.session.usuario });
+    if (req.session.usuario == null) {
+        res.render("index");
+    } else {
+        res.render("Qualidade_Dados", { nome: req.session.usuario });
+    }
 });
+
 
 // Servidor
 app.listen(porta);
