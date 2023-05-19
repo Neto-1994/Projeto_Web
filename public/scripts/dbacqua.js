@@ -2,28 +2,24 @@
 async function connect() {
     if (global.connection && global.connection.state !== 'disconnected') {
         return global.connection;
-    }
-    const mysql = require("mysql2/promise");
+    };
+    const Sequelize = require("sequelize");
     host = "159.203.44.241";
-    port = 64306;
+    porta = 64306;
     user = "cris";
     password = "Acqua@cris2019";
     database = "acqua";
 
     console.log("Iniciou a conexao com o banco..");
-    /*const connection = await mysql.createConnection({
-        host: '159.203.44.241:64306', // O host do banco. Ex: localhost
-        user: 'cris', // Um usuário do banco. Ex: user 
-        password: 'Acqua@cris2019', // A senha do usuário. Ex: user123
-        database: 'acqua' // A base de dados a qual a aplicação irá se conectar, deve ser a mesma onde foi executado o Código 1. Ex: node_mysql
-    });*/
-    
-    const connection = await mysql.createConnection("mysql://" + user + ":" + password + "@" + host + ":" + port + "/" + database);
-    console.log(connection);
+    const connection = await new Sequelize(database, user, password, {
+        dialect: 'mysql',
+        host: host,
+        port: porta
+    });
     global.connection = connection;
     console.log("Conectou no banco de dados..");
     return connection;
-}
+};
 
 async function selectCustomers() {
     const conn = await connect();
