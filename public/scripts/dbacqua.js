@@ -45,6 +45,6 @@ async function deleteCustomer(id) {
     const conn = await connect();
     const sql = ("DELETE FROM cadastros WHERE id = ?;");
     return await conn.query(sql, id);
-}
+};
 
-module.exports = { selectCustomers, insertCustomer, updateCustomer, deleteCustomer };
+exports = { selectCustomers, insertCustomer, updateCustomer, deleteCustomer };
