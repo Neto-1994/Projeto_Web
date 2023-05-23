@@ -10,6 +10,8 @@
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="icon" href="data:,">
+
     <style>
         @media (min-width: 500px) {
             .bd-placeholder-img-lg {
@@ -35,6 +37,30 @@
 
     <!-- Custom styles for this template -->
     <link href="../public/css/Qualidade_Dados.css" rel="stylesheet">
+    <script>
+        import {linhas} from "../public/scripts/tabelaestacao.js";
+        function tabela() {
+            var tabela = document.getElementById("tabeladinamica");
+            var tabela = document.createElement("table");
+            var thead = document.createElement("thead");
+            var tbody = document.createElement("tbody");
+            var thd = function (i) { return (i = 0) ? "th" : "td"; };
+            for (var i = 0; i < linhas.length; i++) {
+                var tr = document.createElement("tr");
+                for (var o = 0; o < linhas[i].length; o++) {
+                    var t = document.createElement(thd(i));
+                    var texto = document.createTextNode(linhas[i][o]);
+                    t.appendChild(texto);
+                    tr.appendChild(t);
+                }
+                (i == 0) ? thead.appendChild(tr) : tbody.appendChild(tr);
+            }
+            tabela.appendChild(thead);
+            tabela.appendChild(tbody);
+            //document.getElementById("tabeladinamica").appendChild(tabela);
+            document.getElementById("tabeladinamica").append("Jair..");
+        };
+    </script>
 </head>
 
 <body>
@@ -71,14 +97,16 @@
     <main class="d-flex flex-nowrap">
         <div class="flex-shrink-0" style="width: 250px;">
             <div class="row mb-3 text-center">
-                <div class="col-md-11 fw-bold fs-5 themed-grid-col">Clientes</div>
-                <div class="col-md-11 themed-grid-col">
-                    <div class="form-check">
-                        <button class="btn btn-sm">MINERAÇÃO MARACÁ
-                            INDÚSTRIA E COMÉRCIO
-                            S/A</button>
+                <form id="form-botao">
+                    <div class="col-md-11 fw-bold fs-5 themed-grid-col">Clientes</div>
+                    <div class="col-md-11 themed-grid-col">
+                        <div class="form-check">
+                            <button id="gerartabela" class="btn btn-sm">MINERAÇÃO MARACÁ
+                                INDÚSTRIA E COMÉRCIO
+                                S/A</button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         <div class="d-flex" style="height: 550px;">
@@ -96,7 +124,7 @@
         </div>
     </footer>
 
-    <script type="module" src="../public/scripts/tabelaestacao.js"></script>
+    <script src="../public/scripts/tabelaestacao.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>

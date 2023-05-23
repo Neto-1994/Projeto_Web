@@ -4,7 +4,7 @@
   //console.log("INSERT INTO cadastros");
   //await db.insertCustomer({nome: "Zé", senha: 1212});
   console.log("SELECT");
-  const usuarios = await db.selectCustomers();
+  const usuarios = await db.selectDados();
   console.log(usuarios);
   //console.log("UPDATE cadastros");
   //await db.updateCustomer(5, {nome: "Joao", senha: 1212});
