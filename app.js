@@ -4,7 +4,7 @@ const session = require('express-session');
 var bodyparser = require('body-parser');
 var path = require('path');
 const db = require("./public/scripts/db.js");
-const te = require("./public/scripts/tabelaestacao.js");
+const dbacqua = require("./public/scripts/dbacqua.js");
 
 // Porta
 porta = 3000;
@@ -32,7 +32,6 @@ app.use(session({
 
 app.get('/', function (req, res) {
     if (req.session.usuario) {
-        console.log(req.session.usuario);
         res.render("pagina", { nome: req.session.usuario });
     } else {
         res.render("index");
@@ -43,7 +42,6 @@ app.post('/', function (req, res) {
     db.selectCustomers(req.body.usuario, req.body.senha)
         .then(retorno => {
             if (retorno == "Autorizado") {
-                console.log(retorno);
                 req.session.usuario = req.body.usuario;
                 res.render("pagina", { nome: req.body.usuario });
             } else {
@@ -61,15 +59,21 @@ app.post('/', function (req, res) {
 });
 
 app.get('/dados', function (req, res) {
-    res.render("Visualizacao_Dados", { nome: req.session.usuario });
+    if (req.session.usuario) {
+        res.render("Visualizacao_Dados", { nome: req.session.usuario });
+    } else {
+        res.redirect("/");
+    }
 });
 
-app.get('/qualidadedados', function (req, res) {
+app.get('/qualidadedados', async function (req, res) {
     if (req.session.usuario == null) {
         res.redirect("/");
     } else {
-        res.render("Qualidade_Dados", { nome: req.session.usuario });
-        te.dados();
+        var dados = await dbacqua.selectDados();
+        console.log("Salvou os dados na variavel linhas..");
+        console.log(dados);
+        res.render("Qualidade_Dados", { nome: req.session.usuario, linhas: dados });
     }
 });
 
