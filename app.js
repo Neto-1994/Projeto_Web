@@ -71,9 +71,9 @@ app.get('/qualidadedados', async function (req, res) {
         res.redirect("/");
     } else {
         var dados = await dbacqua.selectDados();
-        console.log("Salvou os dados na variavel linhas..");
+        console.log("Salvou os dados na variavel dados..");
         console.log(dados);
-        res.render("Qualidade_Dados", { nome: req.session.usuario, linhas: dados });
+        res.render("Qualidade_Dados", { nome: req.session.usuario, dados });
     }
 });
 

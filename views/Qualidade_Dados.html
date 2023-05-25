@@ -10,8 +10,8 @@
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link rel="icon" href="data:,">
 
+    <link rel="icon" href="data:,">
     <style>
         @media (min-width: 500px) {
             .bd-placeholder-img-lg {
@@ -77,7 +77,7 @@
                     <div class="col-md-11 fw-bold fs-5 themed-grid-col">Clientes</div>
                     <div class="col-md-11 themed-grid-col">
                         <div class="form-check">
-                            <button class="btn btn-sm" onclick="gerartabela()">MINERAÇÃO MARACÁ
+                            <button class="btn btn-sm" type="button" onclick="gerartabela()">MINERAÇÃO MARACÁ
                                 INDÚSTRIA E COMÉRCIO
                                 S/A</button>
                         </div>
@@ -102,14 +102,48 @@
     <script>
         function gerartabela() {
             console.log("Executou função gerartabela..");
-            //Teste se na execuçao consegue receber a variavel linhas nesse script..
-            console.log(linhas);
 
-            /*var tabela = document.getElementById("tabeladinamica");
+            var linhas = [{ nome: "Jair", sobrenome: "Neto", cidade: "Canedo" },
+            { nome: "Joao", sobrenome: "Junior", cidade: "Palmeiras" }]//"<%=dados%>";
+
             var tabela = document.createElement("table");
             var thead = document.createElement("thead");
             var tbody = document.createElement("tbody");
-            var thd = function (i) { return (i = 0) ? "th" : "td"; };
+
+            for (let i = 0; i < linhas.length; i++) {
+                let tr = thead.insertRow();
+
+                let hd_nome = tr.insertCell();
+                let hd_sobrenome = tr.insertCell();
+                let th_cidade = tr.insertCell();
+
+                hd_nome.innerText = linhas[i].nome;
+                hd_sobrenome.innerText = linhas[i].sobrenome;
+                th_cidade.innerText = linhas[i].cidade;
+
+                tr.appendChild(hd_nome);
+                tr.appendChild(hd_sobrenome);
+                tr.appendChild(th_cidade);
+                thead.appendChild(tr);
+                tabela.appendChild(thead);
+            }
+            /*for (let e = 0; e < linhas.length; e++) {
+                var tr = document.createElement("tr");
+                var hd1 = document.createElement("th");
+                hd1.innerHTML = linhas[e].nome;
+                var hd2 = document.createElement("th");
+                hd2.innerHTML = linhas[e].sobrenome;
+                var hd3 = document.createElement("th");
+                hd3.innerHTML = linhas[e].cidade;
+            }
+            tr.appendChild(hd1);
+            tr.appendChild(hd2);
+            tr.appendChild(hd3);
+            thead.appendChild(tr);
+            tabela.appendChild(thead);*/
+
+            tabela.classList.add("table", "table-hover", "table-bordered");
+            /*var thd = function (i) { return (i = 0) ? "th" : "td"; };
             for (var i = 0; i < linhas.length; i++) {
                 var tr = document.createElement("tr");
                 for (var o = 0; o < linhas[i].length; o++) {
@@ -119,11 +153,11 @@
                     tr.appendChild(t);
                 }
                 (i == 0) ? thead.appendChild(tr) : tbody.appendChild(tr);
-            }
-            tabela.appendChild(thead);
-            tabela.appendChild(tbody);
-            //document.getElementById("tabeladinamica").appendChild(tabela);*/
-            document.getElementById("tabeladinamica").append("Jair..");
+            }*/
+            //tabela.appendChild(thead);
+            //tabela.appendChild(tbody);
+
+            document.getElementById("tabeladinamica").appendChild(tabela);
         }
     </script>
 
