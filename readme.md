@@ -18,6 +18,6 @@ Instalação do nodemon, para atualização automático do projeto..
 
 Incluir bootstrap via CDN no projeto, por meio do arquivo html..
 
-Instalação do EJS para trabalhar com a parte dinâmica das páginas e reutilização de códigos..
+Instalação do EJS para trabalhar com a parte dinâmica das páginas e reutilização de códigos, permitindo transportar dados do backend para o frontend..
 *** npm i ejs
 

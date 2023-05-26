@@ -89,7 +89,7 @@
             <div class="vr"></div>
         </div>
         <form id="tabeladinamica" class="flex-fill themed-grid-col">
-
+            <%=lista%>
         </form>
         <br>
     </main>
@@ -103,10 +103,9 @@
         function gerartabela() {
             console.log("Executou função gerartabela..");
 
-            var linhas = [{ nome: "Jair", sobrenome: "Neto", cidade: "Canedo" },
-            { nome: "Joao", sobrenome: "Junior", cidade: "Palmeiras" }]//"<%=dados%>";
+            var linhas = "<%=lista%>";
 
-            var tabela = document.createElement("table");
+            /*var tabela = document.createElement("table");
             var thead = document.createElement("thead");
             var tbody = document.createElement("tbody");
 
@@ -117,8 +116,9 @@
                 let hd_sobrenome = tr.insertCell();
                 let th_cidade = tr.insertCell();
 
-                hd_nome.innerText = linhas[i].nome;
-                hd_sobrenome.innerText = linhas[i].sobrenome;
+                hd_nome.innerText = linhas[i];
+                hd_sobrenome.innerText = linhas[i].Pluvio;
+                console.log(linhas);
                 th_cidade.innerText = linhas[i].cidade;
 
                 tr.appendChild(hd_nome);
@@ -126,7 +126,7 @@
                 tr.appendChild(th_cidade);
                 thead.appendChild(tr);
                 tabela.appendChild(thead);
-            }
+            }*/
             /*for (let e = 0; e < linhas.length; e++) {
                 var tr = document.createElement("tr");
                 var hd1 = document.createElement("th");
@@ -142,7 +142,8 @@
             thead.appendChild(tr);
             tabela.appendChild(thead);*/
 
-            tabela.classList.add("table", "table-hover", "table-bordered");
+            //tabela.classList.add("table", "table-hover", "table-bordered");
+
             /*var thd = function (i) { return (i = 0) ? "th" : "td"; };
             for (var i = 0; i < linhas.length; i++) {
                 var tr = document.createElement("tr");
@@ -157,7 +158,9 @@
             //tabela.appendChild(thead);
             //tabela.appendChild(tbody);
 
-            document.getElementById("tabeladinamica").appendChild(tabela);
+            console.log(typeof linhas);
+            console.table(linhas);
+            //document.getElementById("tabeladinamica").appendChild(tabela);
         }
     </script>
 

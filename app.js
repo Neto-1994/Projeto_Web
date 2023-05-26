@@ -49,7 +49,6 @@ app.post('/', function (req, res) {
             }
         })
         .catch(erro => {
-            console.log(erro);
             if (erro == "Senha") {
                 res.render("index");
             } else {
@@ -70,10 +69,12 @@ app.get('/qualidadedados', async function (req, res) {
     if (req.session.usuario == null) {
         res.redirect("/");
     } else {
-        var dados = await dbacqua.selectDados();
+        //var dados = await dbacqua.selectDados();
+        var dados =  {nome: "Jair"};
+        var lista = JSON.stringify(dados);
         console.log("Salvou os dados na variavel dados..");
-        console.log(dados);
-        res.render("Qualidade_Dados", { nome: req.session.usuario, dados });
+        res.locals.lista = lista;
+        res.render("Qualidade_Dados", { nome: req.session.usuario});
     }
 });
 

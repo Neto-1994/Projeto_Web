@@ -20,7 +20,7 @@ async function connect() {
 async function selectDados() {
     try {
         const conn = await connect();
-        const [rows] = await conn.query("SELECT Codigo_Sec, Pluvio FROM medicoes WHERE codigo_sec in (800) AND horalocal BETWEEN '2023-01-01' AND '2023-01-01 23:59:59' ORDER BY dt_medicao desc;");
+        const [rows] = await conn.query("SELECT horalocal, Pluvio FROM medicoes WHERE codigo_sec in (800) AND horalocal BETWEEN '2023-01-01' AND '2023-01-01 3:59:59' ORDER BY dt_medicao desc;");
         return rows;
     } catch (error) {
         console.log(error);
