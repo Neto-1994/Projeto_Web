@@ -65,17 +65,18 @@ app.get('/dados', function (req, res) {
     }
 });
 
-app.get('/qualidadedados', async function (req, res) {
+app.get('/qualidadedados', function (req, res) {
     if (req.session.usuario == null) {
         res.redirect("/");
     } else {
-        //var dados = await dbacqua.selectDados();
-        var dados =  {nome: "Jair"};
-        var lista = JSON.stringify(dados);
-        console.log("Salvou os dados na variavel dados..");
-        res.locals.lista = lista;
-        res.render("Qualidade_Dados", { nome: req.session.usuario});
+        res.render("Qualidade_Dados", { nome: req.session.usuario });
     }
+});
+
+app.get('/qualidadedados/tabela', async function (req, res) {
+    const dados = await dbacqua.selectDados();
+    console.log("Salvou os dados na variavel dados..");
+    res.json(dados);
 });
 
 app.get('/sair', function (req, res) {

@@ -89,7 +89,7 @@
             <div class="vr"></div>
         </div>
         <form id="tabeladinamica" class="flex-fill themed-grid-col">
-            <%=lista%>
+            
         </form>
         <br>
     </main>
@@ -100,66 +100,73 @@
         </div>
     </footer>
     <script>
-        function gerartabela() {
+        async function gerartabela() {
             console.log("Executou função gerartabela..");
 
-            var linhas = "<%=lista%>";
+            const tabela = document.querySelector("#tabeladinamica");
 
-            /*var tabela = document.createElement("table");
-            var thead = document.createElement("thead");
-            var tbody = document.createElement("tbody");
+            fetch('/qualidadedados/tabela')
+            .then(response => response.json())
+                .then(data => console.log(data))
+                .catch(error => {console.error("Erro do gerar tabela: ", error)});
 
-            for (let i = 0; i < linhas.length; i++) {
-                let tr = thead.insertRow();
 
-                let hd_nome = tr.insertCell();
-                let hd_sobrenome = tr.insertCell();
-                let th_cidade = tr.insertCell();
 
-                hd_nome.innerText = linhas[i];
-                hd_sobrenome.innerText = linhas[i].Pluvio;
-                console.log(linhas);
-                th_cidade.innerText = linhas[i].cidade;
+        /*var tabela = document.createElement("table");
+        var thead = document.createElement("thead");
+        var tbody = document.createElement("tbody");
 
-                tr.appendChild(hd_nome);
-                tr.appendChild(hd_sobrenome);
-                tr.appendChild(th_cidade);
-                thead.appendChild(tr);
-                tabela.appendChild(thead);
-            }*/
-            /*for (let e = 0; e < linhas.length; e++) {
-                var tr = document.createElement("tr");
-                var hd1 = document.createElement("th");
-                hd1.innerHTML = linhas[e].nome;
-                var hd2 = document.createElement("th");
-                hd2.innerHTML = linhas[e].sobrenome;
-                var hd3 = document.createElement("th");
-                hd3.innerHTML = linhas[e].cidade;
-            }
-            tr.appendChild(hd1);
-            tr.appendChild(hd2);
-            tr.appendChild(hd3);
+        for (let i = 0; i < linhas.length; i++) {
+            let tr = thead.insertRow();
+
+            let hd_nome = tr.insertCell();
+            let hd_sobrenome = tr.insertCell();
+            let th_cidade = tr.insertCell();
+
+            hd_nome.innerText = linhas[i];
+            hd_sobrenome.innerText = linhas[i].Pluvio;
+            console.log(linhas);
+            th_cidade.innerText = linhas[i].cidade;
+
+            tr.appendChild(hd_nome);
+            tr.appendChild(hd_sobrenome);
+            tr.appendChild(th_cidade);
             thead.appendChild(tr);
-            tabela.appendChild(thead);*/
+            tabela.appendChild(thead);
+        }*/
+        /*for (let e = 0; e < linhas.length; e++) {
+            var tr = document.createElement("tr");
+            var hd1 = document.createElement("th");
+            hd1.innerHTML = linhas[e].nome;
+            var hd2 = document.createElement("th");
+            hd2.innerHTML = linhas[e].sobrenome;
+            var hd3 = document.createElement("th");
+            hd3.innerHTML = linhas[e].cidade;
+        }
+        tr.appendChild(hd1);
+        tr.appendChild(hd2);
+        tr.appendChild(hd3);
+        thead.appendChild(tr);
+        tabela.appendChild(thead);*/
 
-            //tabela.classList.add("table", "table-hover", "table-bordered");
+        //tabela.classList.add("table", "table-hover", "table-bordered");
 
-            /*var thd = function (i) { return (i = 0) ? "th" : "td"; };
-            for (var i = 0; i < linhas.length; i++) {
-                var tr = document.createElement("tr");
-                for (var o = 0; o < linhas[i].length; o++) {
-                    var t = document.createElement(thd(i));
-                    var texto = document.createTextNode(linhas[i][o]);
-                    t.appendChild(texto);
-                    tr.appendChild(t);
-                }
-                (i == 0) ? thead.appendChild(tr) : tbody.appendChild(tr);
-            }*/
-            //tabela.appendChild(thead);
-            //tabela.appendChild(tbody);
+        /*var thd = function (i) { return (i = 0) ? "th" : "td"; };
+        for (var i = 0; i < linhas.length; i++) {
+            var tr = document.createElement("tr");
+            for (var o = 0; o < linhas[i].length; o++) {
+                var t = document.createElement(thd(i));
+                var texto = document.createTextNode(linhas[i][o]);
+                t.appendChild(texto);
+                tr.appendChild(t);
+            }
+            (i == 0) ? thead.appendChild(tr) : tbody.appendChild(tr);
+        }*/
+        //tabela.appendChild(thead);
+        //tabela.appendChild(tbody);
 
-            console.log(typeof linhas);
-            console.table(linhas);
+        //console.log(typeof responseJson);
+        //console.log(responseJson);
             //document.getElementById("tabeladinamica").appendChild(tabela);
         }
     </script>
