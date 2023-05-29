@@ -86,7 +86,7 @@ main {
   padding-top: .50rem;
   padding-bottom: .50rem;
   background-color: white;
-  /*border-top: 1px solid #068272;
-  border-bottom: 1px solid #068272;*/
-  border: 1px solid #068272;
+  border-top: 1px solid #068272;
+  border-bottom: 1px solid #068272;
+  /*border: 1px solid #068272;*/
 }

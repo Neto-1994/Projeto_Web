@@ -60,6 +60,16 @@ async function deleteDados(id) {
 
 };
 
+async function selectEstacao() {
+    try {
+        const conn = await connect();
+        const [estacoes] = await conn.query("SELECT Nome_Estacao FROM acqua.estacoes WHERE Nome_Estacao LIKE '%Maraca%';");
+        return estacoes;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
 /*try {
     await mysql.authenticate;
     console.log('Connection has been established successfully.');
@@ -67,4 +77,4 @@ async function deleteDados(id) {
     console.error('Unable to connect to the database:', error);
   }*/
 
-module.exports = { selectDados, insertDados, updateDados, deleteDados };
+module.exports = { selectDados, insertDados, updateDados, deleteDados, selectEstacao };

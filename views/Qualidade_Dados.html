@@ -85,12 +85,12 @@
                 </form>
             </div>
         </div>
-        <div class="d-flex" style="height: 550px;">
+        <div class="d-flex" style="min-height: 550px;">
             <div class="vr"></div>
         </div>
-        <form id="tabeladinamica" class="flex-fill themed-grid-col">
-            
-        </form>
+        <div id="tabeladinamica" class="flex-fill p-1 position-relative">
+
+        </div>
         <br>
     </main>
 
@@ -102,72 +102,78 @@
     <script>
         async function gerartabela() {
             console.log("Executou função gerartabela..");
-
-            const tabela = document.querySelector("#tabeladinamica");
+            const date = new Date();
 
             fetch('/qualidadedados/tabela')
-            .then(response => response.json())
-                .then(data => console.log(data))
-                .catch(error => {console.error("Erro do gerar tabela: ", error)});
+                .then(response => response.json())
+                .then(estacao => {
+                    var tabela = document.createElement("table");
+                    var thead = document.createElement("thead");
+                    var tbody = document.createElement("tbody");
 
+                    var tr1 = document.createElement("tr");
+                    var th1 = document.createElement("th");
+                    var timeElapsed = Date.now();
+                    var today = new Date(timeElapsed);
+                    th1.innerText = today.toLocaleDateString();
+                    th1.classList.add("text-center");
+                    th1.style.backgroundColor = "green";
+                    th1.colSpan = "3";
 
+                    var tr2 = document.createElement("tr");
+                    var th2 = document.createElement("th");
+                    th2.innerHTML = "Estação";
+                    var th3 = document.createElement("th");
+                    th3.innerHTML = "Tipo";
+                    var th4 = document.createElement("th");
+                    th4.innerHTML = "Observação";
 
-        /*var tabela = document.createElement("table");
-        var thead = document.createElement("thead");
-        var tbody = document.createElement("tbody");
+                    th2.classList.add("text-center");
+                    th3.classList.add("text-center");
+                    th4.classList.add("text-center");
 
-        for (let i = 0; i < linhas.length; i++) {
-            let tr = thead.insertRow();
+                    tr1.appendChild(th1);
+                    tr2.appendChild(th2);
+                    tr2.appendChild(th3);
+                    tr2.appendChild(th4);
 
-            let hd_nome = tr.insertCell();
-            let hd_sobrenome = tr.insertCell();
-            let th_cidade = tr.insertCell();
+                    thead.appendChild(tr1);
+                    thead.appendChild(tr2);
+                    tabela.appendChild(thead);
 
-            hd_nome.innerText = linhas[i];
-            hd_sobrenome.innerText = linhas[i].Pluvio;
-            console.log(linhas);
-            th_cidade.innerText = linhas[i].cidade;
+                    for (let i = 0; i < estacao.length; i++) {
+                        let tr = tbody.insertRow();
+                        let td_hora_local = tr.insertCell();
 
-            tr.appendChild(hd_nome);
-            tr.appendChild(hd_sobrenome);
-            tr.appendChild(th_cidade);
-            thead.appendChild(tr);
-            tabela.appendChild(thead);
-        }*/
-        /*for (let e = 0; e < linhas.length; e++) {
-            var tr = document.createElement("tr");
-            var hd1 = document.createElement("th");
-            hd1.innerHTML = linhas[e].nome;
-            var hd2 = document.createElement("th");
-            hd2.innerHTML = linhas[e].sobrenome;
-            var hd3 = document.createElement("th");
-            hd3.innerHTML = linhas[e].cidade;
-        }
-        tr.appendChild(hd1);
-        tr.appendChild(hd2);
-        tr.appendChild(hd3);
-        thead.appendChild(tr);
-        tabela.appendChild(thead);*/
+                        td_hora_local.innerText = estacao[i].Nome_Estacao;
 
-        //tabela.classList.add("table", "table-hover", "table-bordered");
+                        tr.appendChild(td_hora_local);
 
-        /*var thd = function (i) { return (i = 0) ? "th" : "td"; };
-        for (var i = 0; i < linhas.length; i++) {
-            var tr = document.createElement("tr");
-            for (var o = 0; o < linhas[i].length; o++) {
-                var t = document.createElement(thd(i));
-                var texto = document.createTextNode(linhas[i][o]);
-                t.appendChild(texto);
-                tr.appendChild(t);
-            }
-            (i == 0) ? thead.appendChild(tr) : tbody.appendChild(tr);
-        }*/
-        //tabela.appendChild(thead);
-        //tabela.appendChild(tbody);
+                        tbody.appendChild(tr);
+                        tabela.appendChild(tbody);
+                    }
+                    console.log(estacao);
+                    tabela.classList.add("table", "table-hover", "table-bordered", "position-relative");
+                    document.getElementById("tabeladinamica").appendChild(tabela)
+                })
+                .catch(error => { console.error("Erro do gerar tabela: ", error) });
+            /*for (let i = 0; i < estacao.length; i++) {
+                let tr = tbody.insertRow();
 
-        //console.log(typeof responseJson);
-        //console.log(responseJson);
-            //document.getElementById("tabeladinamica").appendChild(tabela);
+                let td_hora_local = tr.insertCell();
+                let td_pluvio = tr.insertCell();
+                //let td_cidade = tr.insertCell();
+
+                td_hora_local.innerText = dados[i].horalocal;
+                td_pluvio.innerText = dados[i].Pluvio;
+                //td_cidade.innerText = linhas[i].cidade;
+
+                tr.appendChild(td_hora_local);
+                tr.appendChild(td_pluvio);
+                //tr.appendChild(th_cidade);
+                tbody.appendChild(tr);
+                tabela.appendChild(tbody);
+            }*/
         }
     </script>
 
