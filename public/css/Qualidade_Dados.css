@@ -90,3 +90,16 @@ main {
   border-bottom: 1px solid #068272;
   /*border: 1px solid #068272;*/
 }
+
+.table td {
+  padding: 0;
+}
+
+.largura-coluna {
+  font-size: 8pt;
+  white-space: nowrap;
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td {
+  background-color: silver;
+}

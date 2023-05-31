@@ -42,7 +42,7 @@
 <body>
     <header class="p-1 border-bottom" style="background-color: #068272;">
         <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-            <span class="d-flex align-items-center mb-2 mb-lg-0">
+            <span class="align-items-center mb-2 mb-lg-0">
                 <img src="../public/images/Acqua.png" height="50" role="img" />
             </span>
             <div class=" me-lg-auto">
@@ -73,10 +73,10 @@
     <main class="d-flex flex-nowrap">
         <div class="flex-shrink-0" style="width: 200px;">
             <div class="row mb-3 text-center">
-                <form id="form-botao">
+                <form id="form-menu">
                     <div class="col-md-11 fw-bold fs-5 themed-grid-col">Clientes</div>
                     <div class="col-md-11 themed-grid-col">
-                        <div class="form-check">
+                        <div>
                             <button class="btn btn-sm" type="button" onclick="gerartabela()">MINERAÇÃO MARACÁ
                                 INDÚSTRIA E COMÉRCIO
                                 S/A</button>
@@ -88,7 +88,7 @@
         <div class="d-flex" style="min-height: 550px;">
             <div class="vr"></div>
         </div>
-        <div id="tabeladinamica" class="flex-fill p-1 position-relative table-responsive">
+        <div id="tabeladinamica" class="table-responsive">
 
         </div>
         <br>
@@ -120,7 +120,6 @@
                     th1.innerHTML = today.toLocaleDateString();
 
                     // Formatando cabeçalho
-                    th1.classList.add("text-center");
                     th1.style.backgroundColor = "silver";
                     th1.colSpan = "27";
 
@@ -140,6 +139,9 @@
                     th3.rowSpan = "2";
                     th4.colSpan = "24";
                     th5.rowSpan = "2";
+                    th2.classList.add("align-middle");
+                    th3.classList.add("align-middle");
+                    th5.classList.add("align-middle");
 
                     // Adicionando células às linhas
                     tr1.appendChild(th1);
@@ -241,9 +243,11 @@
                         let td_hora_local = tr.insertCell();
                         let td_tipo = tr.insertCell();
 
-
                         td_hora_local.innerText = estacao[i].Nome_Estacao;
                         td_tipo.innerText = estacao[i].Tipo_Estacao;
+
+                        td_hora_local.classList.add("largura-coluna", "text-center");
+                        td_tipo.classList.add("text-center");
 
                         tr.appendChild(td_hora_local);
                         tr.appendChild(td_tipo);
@@ -251,10 +255,9 @@
                         tbody.appendChild(tr);
                         tabela.appendChild(tbody);
                     }
-
                     console.log(estacao);
                     // Formatando a tabela
-                    tabela.classList.add("table-sm", "table-hover", "table-bordered", "position-relative");
+                    tabela.classList.add("table", "table-sm", "table-striped", "table-bordered", "border-dark");
 
                     // Inserir a tabela na div
                     document.getElementById("tabeladinamica").appendChild(tabela)
