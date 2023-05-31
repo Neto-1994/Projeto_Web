@@ -63,7 +63,7 @@ async function deleteDados(id) {
 async function selectEstacao() {
     try {
         const conn = await connect();
-        const [estacoes] = await conn.query("SELECT Nome_Estacao, Tipo_Estacao FROM acqua.estacoes WHERE Nome_Estacao LIKE '%Maraca%' AND Codigo_goes IS NOT NULL;");
+        const [estacoes] = await conn.query("SELECT Nome_Estacao, Tipo_Estacao, Ultima_carga FROM acqua.estacoes WHERE Nome_Estacao LIKE '%Maraca%' AND Codigo_goes IS NOT NULL;");
         return estacoes;
     } catch (error) {
         console.log(error);

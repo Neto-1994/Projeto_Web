@@ -150,6 +150,7 @@
                     tr2.appendChild(th4);
                     tr2.appendChild(th5);
 
+                    //Criando linha e células da linha
                     var tr3 = document.createElement("tr");
                     var h0 = document.createElement("td");
                     h0.innerHTML = "00h";
@@ -200,7 +201,7 @@
                     var h23 = document.createElement("td");
                     h23.innerHTML = "23h";
 
-                    // Adicionando células à linhas tr3
+                    // Adicionando células à linha tr3
                     tr3.appendChild(h0);
                     tr3.appendChild(h1);
                     tr3.appendChild(h2);
@@ -237,7 +238,7 @@
                     thead.appendChild(tr3);
                     tabela.appendChild(thead);
 
-                    // Preenchendo dinamicamente o body da tabela
+                    // Preenchendo body da tabela
                     for (let i = 0; i < estacao.length; i++) {
                         let tr = tbody.insertRow();
                         let td_hora_local = tr.insertCell();
@@ -245,12 +246,29 @@
 
                         td_hora_local.innerText = estacao[i].Nome_Estacao;
                         td_tipo.innerText = estacao[i].Tipo_Estacao;
+                        let td_carga = estacao[i].Ultima_carga;
+
+                        // Determinando horário da transmissão com horário UTC
+                        let db_data = new Date(td_carga);
+                        let db_hora = db_data.getUTCHours();
+                        let hora = today.getUTCHours() + 2;
+
+                        if (hora == db_hora) {
+                            console.log("Entrou na condicao if..", db_hora);
+                            var cor = tr.insertCell();
+                            cor.style.backgroundColor = "green";
+                        } else {
+                            console.log("Entrou na condicao else..");
+                            var cor = tr.insertCell();
+                            cor.style.backgroundColor = "red";
+                        }
 
                         td_hora_local.classList.add("largura-coluna", "text-center");
                         td_tipo.classList.add("text-center");
 
                         tr.appendChild(td_hora_local);
                         tr.appendChild(td_tipo);
+                        tr.append(cor);
 
                         tbody.appendChild(tr);
                         tabela.appendChild(tbody);
