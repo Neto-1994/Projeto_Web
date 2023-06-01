@@ -75,8 +75,14 @@ app.get('/qualidadedados', function (req, res) {
 
 app.get('/qualidadedados/tabela', async function (req, res) {
     const estacao = await dbacqua.selectEstacao();
-    console.log("Salvou dados na variavel..");
+    console.log("Salvou dados na variavel estacao..");
     res.json(estacao);
+});
+
+app.get('/qualidadedados/transmissoes', async function (req, res) {
+    const transmissao = await dbacqua.selectTransmissoes();
+    console.log("Salvou dados na variavel transmissao..");
+    res.json(transmissao);
 });
 
 app.get('/sair', function (req, res) {

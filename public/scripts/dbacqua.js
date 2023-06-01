@@ -17,7 +17,7 @@ async function connect() {
     }
 };
 
-async function selectDados() {
+async function selectMedicoes() {
     try {
         const conn = await connect();
         const [rows] = await conn.query("SELECT horalocal, Pluvio FROM medicoes WHERE codigo_sec in (800) AND horalocal BETWEEN '2023-01-01' AND '2023-01-01 3:59:59' ORDER BY dt_medicao desc;");
@@ -63,8 +63,18 @@ async function deleteDados(id) {
 async function selectEstacao() {
     try {
         const conn = await connect();
-        const [estacoes] = await conn.query("SELECT Nome_Estacao, Tipo_Estacao, Ultima_carga FROM acqua.estacoes WHERE Nome_Estacao LIKE '%Maraca%' AND Codigo_goes IS NOT NULL;");
+        const [estacoes] = await conn.query("SELECT Nome_Estacao, Tipo_Estacao FROM acqua.estacoes WHERE Nome_Estacao LIKE '%Maraca%' AND Codigo_goes IS NOT NULL;");
         return estacoes;
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+async function selectTransmissoes() {
+    try {
+        const conn = await connect();
+        const [transmissoes] = await conn.query("SELECT Codigo_Sec, HoraLocal FROM acqua.medicoes WHERE Codigo_Sec = 1221 AND horalocal LIKE '2023-06-01 %:00:00' ORDER BY dt_medicao DESC;");
+        return transmissoes;
     } catch (error) {
         console.log(error);
     }
@@ -77,4 +87,4 @@ async function selectEstacao() {
     console.error('Unable to connect to the database:', error);
   }*/
 
-module.exports = { selectDados, insertDados, updateDados, deleteDados, selectEstacao };
+module.exports = { selectMedicoes, selectEstacao, selectTransmissoes };

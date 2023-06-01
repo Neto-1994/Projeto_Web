@@ -102,6 +102,7 @@
     <script>
         async function gerartabela() {
             console.log("Executou função gerartabela..");
+            limpardiv();
             const date = new Date();
 
             fetch('/qualidadedados/tabela')
@@ -239,48 +240,343 @@
                     tabela.appendChild(thead);
 
                     // Preenchendo body da tabela
-                    for (let i = 0; i < estacao.length; i++) {
-                        let tr = tbody.insertRow();
-                        let td_hora_local = tr.insertCell();
-                        let td_tipo = tr.insertCell();
+                    fetch('/qualidadedados/transmissoes')
+                        .then(response => response.json())
+                        .then(transmissao => {
+                            for (let i = 0; i < estacao.length; i++) {
+                                var tr = tbody.insertRow();
+                                var td_estacao = tr.insertCell();
+                                var td_tipo = tr.insertCell();
+                                var hora0 = tr.insertCell();
+                                var hora1 = tr.insertCell();
+                                var hora2 = tr.insertCell();
+                                var hora3 = tr.insertCell();
+                                var hora4 = tr.insertCell();
+                                var hora5 = tr.insertCell();
+                                var hora6 = tr.insertCell();
+                                var hora7 = tr.insertCell();
+                                var hora8 = tr.insertCell();
+                                var hora9 = tr.insertCell();
+                                var hora10 = tr.insertCell();
+                                var hora11 = tr.insertCell();
+                                var hora12 = tr.insertCell();
+                                var hora13 = tr.insertCell();
+                                var hora14 = tr.insertCell();
+                                var hora15 = tr.insertCell();
+                                var hora16 = tr.insertCell();
+                                var hora17 = tr.insertCell();
+                                var hora18 = tr.insertCell();
+                                var hora19 = tr.insertCell();
+                                var hora20 = tr.insertCell();
+                                var hora21 = tr.insertCell();
+                                var hora22 = tr.insertCell();
+                                var hora23 = tr.insertCell();
+                                var obs = tr.insertCell();
 
-                        td_hora_local.innerText = estacao[i].Nome_Estacao;
-                        td_tipo.innerText = estacao[i].Tipo_Estacao;
-                        let td_carga = estacao[i].Ultima_carga;
+                                td_estacao.innerText = estacao[i].Nome_Estacao;
+                                td_tipo.innerText = estacao[i].Tipo_Estacao;
 
-                        // Determinando horário da transmissão com horário UTC
-                        let db_data = new Date(td_carga);
-                        let db_hora = db_data.getUTCHours();
-                        let hora = today.getUTCHours() + 2;
+                                for (let e = 0; e < transmissao.length; e++) {
+                                    let hora_transmissao = transmissao[e].HoraLocal;
+                                    let h = new Date(hora_transmissao)
+                                    let hora_tr = h.getHours();
 
-                        if (hora == db_hora) {
-                            console.log("Entrou na condicao if..", db_hora);
-                            var cor = tr.insertCell();
-                            cor.style.backgroundColor = "green";
-                        } else {
-                            console.log("Entrou na condicao else..");
-                            var cor = tr.insertCell();
-                            cor.style.backgroundColor = "red";
-                        }
+                                    switch (hora_tr) {
+                                        case 23:
+                                            if (hora_transmissao != null) {
+                                                hora23.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 23..", hora_tr);
+                                            } else {
+                                                hora23.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 23..", hora_tr);
+                                            }
+                                            break;
+                                        case 22:
+                                            if (hora_transmissao != null) {
+                                                hora22.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 22..", hora_tr);
+                                            } else {
+                                                hora22.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 22..", hora_tr);
+                                            }
+                                            break;
+                                        case 21:
+                                            if (hora_transmissao != null) {
+                                                hora21.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 21..", hora_tr);
+                                            } else {
+                                                hora21.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 21..", hora_tr);
+                                            }
+                                            break;
+                                        case 20:
+                                            if (hora_transmissao != null) {
+                                                hora20.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 20..", hora_tr);
+                                            } else {
+                                                hora20.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 20..", hora_tr);
+                                            }
+                                            break;
+                                        case 19:
+                                            if (hora_transmissao != null) {
+                                                hora19.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 19..", hora_tr);
+                                            } else {
+                                                hora19.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 19..", hora_tr);
+                                            }
+                                            break;
+                                        case 18:
+                                            if (hora_transmissao != null) {
+                                                hora18.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 18..", hora_tr);
+                                            } else {
+                                                hora18.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 18..", hora_tr);
+                                            }
+                                            break;
+                                        case 17:
+                                            if (hora_transmissao != null) {
+                                                hora17.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 17..", hora_tr);
+                                            } else {
+                                                hora17.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 17..", hora_tr);
+                                            }
+                                            break;
+                                        case 16:
+                                            if (hora_transmissao != null) {
+                                                hora16.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 16..", hora_tr);
+                                            } else {
+                                                hora16.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 16..", hora_tr);
+                                            }
+                                            break;
+                                        case 15:
+                                            if (hora_transmissao != null) {
+                                                hora15.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 15..", hora_tr);
+                                            } else {
+                                                hora15.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 15..", hora_tr);
+                                            }
+                                            break;
+                                        case 14:
+                                            if (hora_transmissao != null) {
+                                                hora14.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 14..", hora_tr);
+                                            } else {
+                                                hora14.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 14..", hora_tr);
+                                            }
+                                            break;
+                                        case 13:
+                                            if (hora_transmissao != null) {
+                                                hora13.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 13..", hora_tr);
+                                            } else {
+                                                hora13.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 13..", hora_tr);
+                                            }
+                                            break;
+                                        case 12:
+                                            if (hora_transmissao != null) {
+                                                hora12.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 12..", hora_tr);
+                                            } else {
+                                                hora12.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 12..", hora_tr);
+                                            }
+                                            break;
+                                        case 11:
+                                            if (hora_transmissao != null) {
+                                                hora11.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 11..", hora_tr);
+                                            } else {
+                                                hora11.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 11..", hora_tr);
+                                            }
+                                            break;
+                                        case 10:
+                                            if (hora_transmissao != null) {
+                                                hora10.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 10..", hora_tr);
+                                            } else {
+                                                hora10.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 10..", hora_tr);
+                                            }
+                                            break;
+                                        case 9:
+                                            if (hora_transmissao != null) {
+                                                hora9.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 9..", hora_tr);
+                                            } else {
+                                                hora9.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 9..", hora_tr);
+                                            }
+                                            break;
+                                        case 8:
+                                            if (hora_transmissao != null) {
+                                                hora8.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 8..", hora_tr);
+                                            } else {
+                                                hora8.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 8..", hora_tr);
+                                            }
+                                            break;
+                                        case 7:
+                                            if (hora_transmissao != null) {
+                                                hora7.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 7..", hora_tr);
+                                            } else {
+                                                hora7.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 7..", hora_tr);
+                                            }
+                                            break;
+                                        case 6:
+                                            if (hora_transmissao != null) {
+                                                hora6.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 6..", hora_tr);
+                                            } else {
+                                                hora6.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 6..", hora_tr);
+                                            }
+                                            break;
+                                        case 5:
+                                            if (hora_transmissao != null) {
+                                                hora5.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 5..", hora_tr);
+                                            } else {
+                                                hora5.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 5..", hora_tr);
+                                            }
+                                            break;
+                                        case 4:
+                                            if (hora_transmissao != null) {
+                                                hora4.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 4..", hora_tr);
+                                            } else {
+                                                hora4.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 4..", hora_tr);
+                                            }
+                                            break;
+                                        case 3:
+                                            if (hora_transmissao != null) {
+                                                hora3.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 3..", hora_tr);
+                                            } else {
+                                                hora3.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 3..", hora_tr);
+                                            }
+                                            break;
+                                        case 2:
+                                            if (hora_transmissao != null) {
+                                                hora2.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 2..", hora_tr);
+                                            } else {
+                                                hora2.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 2..", hora_tr);
+                                            }
+                                            break;
+                                        case 1:
+                                            if (hora_transmissao != null) {
+                                                hora1.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 1..", hora_tr);
+                                            } else {
+                                                hora1.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 1..", hora_tr);
+                                            }
+                                            break;
+                                        case 0:
+                                            if (hora_transmissao != null) {
+                                                hora0.style.backgroundColor = "green";
+                                                console.log("Entrou no if da case 0..", hora_tr);
+                                            } else {
+                                                hora0.style.backgroundColor = "red";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                                console.log("Entrou no else da case 0..", hora_tr);
+                                            }
+                                            break;
+                                        default:
 
-                        td_hora_local.classList.add("largura-coluna", "text-center");
-                        td_tipo.classList.add("text-center");
+                                            break;
+                                    }
+                                }
+                                td_estacao.classList.add("largura-coluna", "text-center");
+                                td_tipo.classList.add("text-center");
+                                obs.classList.add("largura-coluna", "text-center");
+                            }
+                            tr.appendChild(td_estacao);
+                            tr.appendChild(td_tipo);
+                            tr.appendChild(hora0);
+                            tr.appendChild(hora1);
+                            tr.appendChild(hora2);
+                            tr.appendChild(hora3);
+                            tr.appendChild(hora4);
+                            tr.appendChild(hora5);
+                            tr.appendChild(hora6);
+                            tr.appendChild(hora7);
+                            tr.appendChild(hora8);
+                            tr.appendChild(hora9);
+                            tr.appendChild(hora10);
+                            tr.appendChild(hora11);
+                            tr.appendChild(hora12);
+                            tr.appendChild(hora13);
+                            tr.appendChild(hora14);
+                            tr.appendChild(hora15);
+                            tr.appendChild(hora16);
+                            tr.appendChild(hora17);
+                            tr.appendChild(hora18);
+                            tr.appendChild(hora19);
+                            tr.appendChild(hora20);
+                            tr.appendChild(hora21);
+                            tr.appendChild(hora22);
+                            tr.appendChild(hora23);
+                            tr.appendChild(obs);
+                            tbody.appendChild(tr);
+                            tabela.appendChild(tbody);
 
-                        tr.appendChild(td_hora_local);
-                        tr.appendChild(td_tipo);
-                        tr.append(cor);
+                            console.log(estacao);
+                            console.log(transmissao);
 
-                        tbody.appendChild(tr);
-                        tabela.appendChild(tbody);
-                    }
-                    console.log(estacao);
-                    // Formatando a tabela
-                    tabela.classList.add("table", "table-sm", "table-striped", "table-bordered", "border-dark");
+                            // Formatando a tabela
+                            tabela.classList.add("table", "table-sm", "table-striped", "table-bordered", "border-dark");
 
-                    // Inserir a tabela na div
-                    document.getElementById("tabeladinamica").appendChild(tabela)
+                            // Inserir a tabela na div
+                            document.getElementById("tabeladinamica").appendChild(tabela);
+                        })
                 })
                 .catch(error => { console.error("Erro do gerar tabela: ", error) });
+
+        }
+        function limpardiv() {
+            const box = document.getElementById("tabeladinamica");
+            box.innerText = "";
         }
     </script>
 
