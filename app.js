@@ -80,9 +80,9 @@ app.get('/qualidadedados/tabela', async function (req, res) {
 });
 
 app.get('/qualidadedados/transmissoes', async function (req, res) {
-    const transmissao = await dbacqua.selectTransmissoes();
-    console.log("Salvou dados na variavel transmissao..");
-    res.json(transmissao);
+    const transmissoes = await dbacqua.selectTransmissoes();
+    console.log("Salvou dados na variavel transmissoes..");
+    res.json(transmissoes);
 });
 
 app.get('/sair', function (req, res) {

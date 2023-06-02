@@ -1,9 +1,6 @@
 Driver de conexão ao banco de dados..
 *** npm i mysql2
 
-Módulo para analisar os dados do formulário..
-npm i body-parser
-
 Analisador de corpo da mensagem, pode analisar o corpo da solicitação do cliente baseado em string em um objeto JavaScript..
 *** npm i body-parser
 

@@ -73,8 +73,9 @@ async function selectEstacao() {
 async function selectTransmissoes() {
     try {
         const conn = await connect();
-        const [transmissoes] = await conn.query("SELECT Codigo_Sec, HoraLocal FROM acqua.medicoes WHERE Codigo_Sec = 1221 AND horalocal LIKE '2023-06-01 %:00:00' ORDER BY dt_medicao DESC;");
-        return transmissoes;
+        const [estacao_1221] = await conn.query("SELECT Codigo_Sec, Hora_transmissao, Status_Mensagem FROM acqua.mensagens WHERE Codigo_Sec = 1221 AND Hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR) ORDER BY Hora_transmissao ASC;");
+        const [estacao_1222] = await conn.query("SELECT Codigo_Sec, Hora_transmissao, Status_Mensagem FROM acqua.mensagens WHERE Codigo_Sec = 1222 AND Hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
+        return [estacao_1221, estacao_1222];
     } catch (error) {
         console.log(error);
     }
