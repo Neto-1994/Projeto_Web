@@ -60,21 +60,11 @@ async function deleteDados(id) {
 
 };
 
-async function selectEstacao() {
-    try {
-        const conn = await connect();
-        const [estacoes] = await conn.query("SELECT Nome_Estacao, Tipo_Estacao FROM acqua.estacoes WHERE Nome_Estacao LIKE '%Maraca%' AND Codigo_goes IS NOT NULL;");
-        return estacoes;
-    } catch (error) {
-        console.log(error);
-    }
-};
-
 async function selectTransmissoes() {
     try {
         const conn = await connect();
-        const [estacao_1221] = await conn.query("SELECT Codigo_Sec, Hora_transmissao, Status_Mensagem FROM acqua.mensagens WHERE Codigo_Sec = 1221 AND Hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR) ORDER BY Hora_transmissao ASC;");
-        const [estacao_1222] = await conn.query("SELECT Codigo_Sec, Hora_transmissao, Status_Mensagem FROM acqua.mensagens WHERE Codigo_Sec = 1222 AND Hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
+        const [estacao_1221] = await conn.query("SELECT e.nome_estacao, e.Tipo_Estacao, msg.hora_transmissao, msg.status_mensagem FROM mensagens msg, estacoes e WHERE msg.codigo_sec = e.Codigo_Sec AND msg.codigo_sec = 1221 AND e.Nome_Estacao LIKE '%Maraca%' AND e.Codigo_goes is not null AND msg.hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
+        const [estacao_1222] = await conn.query("SELECT e.nome_estacao, e.Tipo_Estacao, msg.hora_transmissao, msg.status_mensagem FROM mensagens msg, estacoes e WHERE msg.codigo_sec = e.Codigo_Sec AND msg.codigo_sec = 1222 AND e.Nome_Estacao LIKE '%Maraca%' AND e.Codigo_goes is not null AND msg.hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
         return [estacao_1221, estacao_1222];
     } catch (error) {
         console.log(error);
