@@ -7,7 +7,7 @@
     <title>Login</title>
 
     <link rel="shortcut icon" href="../public/images/favicon.png">
-    <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../public/css/Login.css">
 </head>
 
 <body>
@@ -18,21 +18,23 @@
                     <span class="login-form-title">
                         Faça o login
                     </span>
-                    
+
                     <div class="wrap-input margin-top-35 margin-bottom-35">
                         <input required class="input-form" type="text" name="usuario" autocomplete="off" />
                         <span class="focus-input-form" data-placeholder="Usuario"></span>
                         <span class="error span-error"></span>
+                        <span id="teste1" class="error span-error"></span>
                     </div>
 
                     <div class="wrap-input margin-bottom-35">
                         <input required class="input-form" type="password" name="senha" />
                         <span class="focus-input-form" data-placeholder="Senha"></span>
                         <span class="error span-error"></span>
+                        <span id="teste2" class="error span-error"></span>
                     </div>
 
                     <div class="container-login-form-btn">
-                        <input class="login-form-btn" type="submit" value="Login">
+                        <input class="login-form-btn" type="submit" onclick="errorlogin()" value="Login">
                     </div>
 
                     <!--<ul class="login-utils">
@@ -56,11 +58,12 @@
                 </form>
             </div>
             <img src="../public/images/Acqua.png" alt="logo" width="500" height="250" class="margin-left-100" />
+            
         </div>
     </div>
     <script>
         let inputs = document.getElementsByClassName("input-form");
-        for (let input of inputs){
+        for (let input of inputs) {
             input.addEventListener("blur", function () {
                 if (input.value.trim() != "") {
                     input.classList.add("has-val");
@@ -68,6 +71,14 @@
                     input.classList.remove("has-val");
                 }
             });
+        }
+        function errorlogin() {
+            var teste = "<$retorno$>";
+            console.log("Executando funcao errorlogin..");
+            console.log(teste);
+            var span = document.getElementById("teste1");
+            span.classList.add("active");
+            span.innerHTML = "Usuário incorreto.";
         }
     </script>
     <script src="../public/scripts/eventoslogin.js"></script>

@@ -50,8 +50,10 @@ app.post('/', function (req, res) {
         })
         .catch(erro => {
             if (erro == "Senha") {
+                res.locals.retorno = erro;
                 res.render("index");
             } else {
+                res.locals.retorno = erro;
                 res.render("index");
             }
         });
@@ -75,7 +77,6 @@ app.get('/qualidadedados', function (req, res) {
 
 app.get('/qualidadedados/tabela', async function (req, res) {
     const transmissoes = await dbacqua.selectTransmissoes();
-    console.log("Salvou dados na variavel transmissoes..");
     res.json(transmissoes);
 });
 

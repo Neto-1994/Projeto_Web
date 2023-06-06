@@ -65,7 +65,9 @@ async function selectTransmissoes() {
         const conn = await connect();
         const [estacao_1221] = await conn.query("SELECT e.nome_estacao, e.Tipo_Estacao, msg.hora_transmissao, msg.status_mensagem FROM mensagens msg, estacoes e WHERE msg.codigo_sec = e.Codigo_Sec AND msg.codigo_sec = 1221 AND e.Nome_Estacao LIKE '%Maraca%' AND e.Codigo_goes is not null AND msg.hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
         const [estacao_1222] = await conn.query("SELECT e.nome_estacao, e.Tipo_Estacao, msg.hora_transmissao, msg.status_mensagem FROM mensagens msg, estacoes e WHERE msg.codigo_sec = e.Codigo_Sec AND msg.codigo_sec = 1222 AND e.Nome_Estacao LIKE '%Maraca%' AND e.Codigo_goes is not null AND msg.hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
-        return [estacao_1221, estacao_1222];
+        const [estacao_1229] = await conn.query("SELECT e.nome_estacao, e.Tipo_Estacao, msg.hora_transmissao, msg.status_mensagem FROM mensagens msg, estacoes e WHERE msg.codigo_sec = e.Codigo_Sec AND msg.codigo_sec = 1229 AND e.Nome_Estacao LIKE '%Maraca%' AND e.Codigo_goes is not null AND msg.hora_transmissao BETWEEN '2023-06-01' AND '2023-06-01 23:59:59';");
+        const [estacao_1226] = await conn.query("SELECT e.nome_estacao, e.Tipo_Estacao, msg.hora_transmissao, msg.status_mensagem FROM mensagens msg, estacoes e WHERE msg.codigo_sec = e.Codigo_Sec AND msg.codigo_sec = 1229 AND e.Nome_Estacao LIKE '%Maraca%' AND e.Codigo_goes is not null AND msg.hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
+        return [estacao_1221, estacao_1222, estacao_1229, estacao_1226];
     } catch (error) {
         console.log(error);
     }
@@ -78,4 +80,4 @@ async function selectTransmissoes() {
     console.error('Unable to connect to the database:', error);
   }*/
 
-module.exports = { selectMedicoes, selectEstacao, selectTransmissoes };
+module.exports = { selectMedicoes, selectTransmissoes };

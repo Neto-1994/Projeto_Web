@@ -58,4 +58,5 @@ for (var campo of campos) {
     })
     campo.addEventListener("blur", CustomizarValidacao)
 }
+
 document.querySelector("form").addEventListener("submit");

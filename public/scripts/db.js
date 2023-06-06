@@ -1,4 +1,5 @@
 const mysql = require("mysql2/promise");
+
 // Conexão com o Banco de dados
 async function connect() {
     const connection = await mysql.createConnection({
@@ -8,7 +9,6 @@ async function connect() {
         database: "usuarios",
         port: 3306
     });
-    console.log("Conectou no banco de dados local..");
     return connection;
 };
 
@@ -22,14 +22,11 @@ async function selectCustomers(nome, senha) {
         if (results != 0) {
             const cadastros = results[0];
             if (senha != null && senha === cadastros.Senha) {
-                console.log("Passei no if da senha..");
                 resolve("Autorizado");
             } else {
-                console.log("Estou no else da senha..");
                 reject("Senha");
             }
         } else {
-            console.log("Estou no else do usuario..");
             reject("Usuario");
         }
     });
