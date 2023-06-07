@@ -58,7 +58,7 @@
                 </form>
             </div>
             <img src="../public/images/Acqua.png" alt="logo" width="500" height="250" class="margin-left-100" />
-            
+
         </div>
     </div>
     <script>
@@ -72,8 +72,8 @@
                 }
             });
         }
-        function errorlogin() {
-            var teste = "<$retorno$>";
+        function errorlogin(retorno) {
+            var teste = '<%= retorno %>';
             console.log("Executando funcao errorlogin..");
             console.log(teste);
             var span = document.getElementById("teste1");

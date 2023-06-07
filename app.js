@@ -32,7 +32,7 @@ app.use(session({
 
 app.get('/', function (req, res) {
     if (req.session.usuario) {
-        res.render("pagina", { nome: req.session.usuario });
+        res.render("pagina");
     } else {
         res.render("index");
     }
@@ -43,17 +43,13 @@ app.post('/', function (req, res) {
         .then(retorno => {
             if (retorno == "Autorizado") {
                 req.session.usuario = req.body.usuario;
-                res.render("pagina", { nome: req.body.usuario });
-            } else {
-                res.render("index");
+                res.render("pagina");
             }
         })
         .catch(erro => {
             if (erro == "Senha") {
-                res.locals.retorno = erro;
                 res.render("index");
             } else {
-                res.locals.retorno = erro;
                 res.render("index");
             }
         });
