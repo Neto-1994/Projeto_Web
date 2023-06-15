@@ -43,7 +43,7 @@ app.post('/', function (req, res) {
         .then(retorno => {
             if (retorno == "Autorizado") {
                 req.session.usuario = req.body.usuario;
-                res.render("pagina");
+                res.render("pagina", { nome: req.session.usuario });
             }
         })
         .catch(erro => {
@@ -71,7 +71,12 @@ app.get('/qualidadedados', function (req, res) {
     }
 });
 
-app.get('/qualidadedados/tabela', async function (req, res) {
+app.get('/qualidadedados/estacoes', async function (req, res) {
+    const estacoes = await dbacqua.selectEstacoes();
+    res.json(estacoes);
+});
+
+app.get('/qualidadedados/transmissoes', async function (req, res) {
     const transmissoes = await dbacqua.selectTransmissoes();
     res.json(transmissoes);
 });

@@ -105,9 +105,9 @@
             limpardiv();
             const date = new Date();
 
-            fetch('/qualidadedados/tabela')
+            fetch('/qualidadedados/estacoes')
                 .then(response => response.json())
-                .then(transmissoes => {
+                .then(estacoes => {
                     // Criando elementos da tabela
                     var tabela = document.createElement("table");
                     var thead = document.createElement("thead");
@@ -240,314 +240,322 @@
                     tabela.appendChild(thead);
 
                     // Preenchendo body da tabela
-                    for (let c of transmissoes) {
-                        var tr = tbody.insertRow();
-                        var td_estacao = tr.insertCell();
-                        var td_tipo = tr.insertCell();
-                        var hora0 = tr.insertCell();
-                        var hora1 = tr.insertCell();
-                        var hora2 = tr.insertCell();
-                        var hora3 = tr.insertCell();
-                        var hora4 = tr.insertCell();
-                        var hora5 = tr.insertCell();
-                        var hora6 = tr.insertCell();
-                        var hora7 = tr.insertCell();
-                        var hora8 = tr.insertCell();
-                        var hora9 = tr.insertCell();
-                        var hora10 = tr.insertCell();
-                        var hora11 = tr.insertCell();
-                        var hora12 = tr.insertCell();
-                        var hora13 = tr.insertCell();
-                        var hora14 = tr.insertCell();
-                        var hora15 = tr.insertCell();
-                        var hora16 = tr.insertCell();
-                        var hora17 = tr.insertCell();
-                        var hora18 = tr.insertCell();
-                        var hora19 = tr.insertCell();
-                        var hora20 = tr.insertCell();
-                        var hora21 = tr.insertCell();
-                        var hora22 = tr.insertCell();
-                        var hora23 = tr.insertCell();
-                        var obs = tr.insertCell();
+                    fetch('/qualidadedados/transmissoes')
+                        .then(response => response.json())
+                        .then(transmissoes => {
+                            for (let e = 0; e < estacoes.length; e++) {
+                                var tr = tbody.insertRow();
+                                var td_estacao = tr.insertCell();
+                                var td_tipo = tr.insertCell();
+                                var hora0 = tr.insertCell();
+                                var hora1 = tr.insertCell();
+                                var hora2 = tr.insertCell();
+                                var hora3 = tr.insertCell();
+                                var hora4 = tr.insertCell();
+                                var hora5 = tr.insertCell();
+                                var hora6 = tr.insertCell();
+                                var hora7 = tr.insertCell();
+                                var hora8 = tr.insertCell();
+                                var hora9 = tr.insertCell();
+                                var hora10 = tr.insertCell();
+                                var hora11 = tr.insertCell();
+                                var hora12 = tr.insertCell();
+                                var hora13 = tr.insertCell();
+                                var hora14 = tr.insertCell();
+                                var hora15 = tr.insertCell();
+                                var hora16 = tr.insertCell();
+                                var hora17 = tr.insertCell();
+                                var hora18 = tr.insertCell();
+                                var hora19 = tr.insertCell();
+                                var hora20 = tr.insertCell();
+                                var hora21 = tr.insertCell();
+                                var hora22 = tr.insertCell();
+                                var hora23 = tr.insertCell();
+                                var obs = tr.insertCell();
 
+                                td_estacao.innerText = estacoes[e].Nome_Estacao;
+                                td_tipo.innerText = estacoes[e].Tipo_Estacao;
 
-                        for (let e of c) {
-                            td_estacao.innerText = e.nome_estacao;
-                            td_tipo.innerText = e.Tipo_Estacao;
-                            let hora_tr = new Date(e.hora_transmissao)
-                            let h = hora_tr.getHours();
+                                for (let t = 0; t < transmissoes.length; t++) {
+                                    let hora_tr = new Date(transmissoes[e][t].hora_transmissao)
+                                    let h = hora_tr.getHours();
+                                    console.log("Aqui: ", h)
+                                    switch (h) {
+                                        case 23:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora23.style.backgroundColor = "green";
+                                            } else {
+                                                hora23.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 22:
+                                            console.log("Depois: ", transmissoes[e][t].status_mensagem)
+                                            if (transmissoes[e][t].status_mensagem == "G") {
+                                                hora22.style.backgroundColor = "green";
+                                            } else {
+                                                hora22.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 21:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora21.style.backgroundColor = "green";
+                                            } else {
+                                                hora21.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 20:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora20.style.backgroundColor = "green";
+                                            } else {
+                                                hora20.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 19:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora19.style.backgroundColor = "green";
+                                            } else {
+                                                hora19.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 18:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora18.style.backgroundColor = "green";
+                                            } else {
+                                                hora18.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 17:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora17.style.backgroundColor = "green";
+                                            } else {
+                                                hora17.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 16:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora16.style.backgroundColor = "green";
+                                            } else {
+                                                hora16.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 15:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora15.style.backgroundColor = "green";
+                                            } else {
+                                                hora15.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 14:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora14.style.backgroundColor = "green";
+                                            } else {
+                                                hora14.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 13:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora13.style.backgroundColor = "green";
+                                            } else {
+                                                hora13.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 12:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora12.style.backgroundColor = "green";
+                                            } else {
+                                                hora12.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 11:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora11.style.backgroundColor = "green";
+                                            } else {
+                                                hora11.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 10:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora10.style.backgroundColor = "green";
+                                            } else {
+                                                hora10.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 9:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora9.style.backgroundColor = "green";
+                                            } else {
+                                                hora9.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 8:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora8.style.backgroundColor = "green";
+                                            } else {
+                                                hora8.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 7:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora7.style.backgroundColor = "green";
+                                            } else {
+                                                hora7.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 6:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora6.style.backgroundColor = "green";
+                                            } else {
+                                                hora6.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 5:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora5.style.backgroundColor = "green";
+                                            } else {
+                                                hora5.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 4:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora4.style.backgroundColor = "green";
+                                            } else {
+                                                hora4.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 3:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora3.style.backgroundColor = "green";
+                                            } else {
+                                                hora3.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 2:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora2.style.backgroundColor = "green";
+                                            } else {
+                                                hora2.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 1:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora1.style.backgroundColor = "green";
+                                            } else {
+                                                hora1.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        case 0:
+                                            if (transmissoes[i][t].status_mensagem == "G") {
+                                                hora0.style.backgroundColor = "green";
+                                            } else {
+                                                hora0.style.backgroundColor = "yellow";
+                                                obs.innerText = "Erro na recepção dos dados.";
+                                            }
+                                            break;
+                                        default:
 
-                            switch (h) {
-                                case 23:
-                                    if (e.status_mensagem == "G") {
-                                        hora23.style.backgroundColor = "green";
-                                    } else {
-                                        hora23.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
+                                            break;
                                     }
-                                    break;
-                                case 22:
-                                    if (e.status_mensagem == "G") {
-                                        hora22.style.backgroundColor = "green";
-                                    } else {
-                                        hora22.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 21:
-                                    if (e.status_mensagem == "G") {
-                                        hora21.style.backgroundColor = "green";
-                                    } else {
-                                        hora21.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 20:
-                                    if (e.status_mensagem == "G") {
-                                        hora20.style.backgroundColor = "green";
-                                    } else {
-                                        hora20.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 19:
-                                    if (e.status_mensagem == "G") {
-                                        hora19.style.backgroundColor = "green";
-                                    } else {
-                                        hora19.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 18:
-                                    if (e.status_mensagem == "G") {
-                                        hora18.style.backgroundColor = "green";
-                                    } else {
-                                        hora18.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 17:
-                                    if (e.status_mensagem == "G") {
-                                        hora17.style.backgroundColor = "green";
-                                    } else {
-                                        hora17.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 16:
-                                    if (e.status_mensagem == "G") {
-                                        hora16.style.backgroundColor = "green";
-                                    } else {
-                                        hora16.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 15:
-                                    if (e.status_mensagem == "G") {
-                                        hora15.style.backgroundColor = "green";
-                                    } else {
-                                        hora15.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 14:
-                                    if (e.status_mensagem == "G") {
-                                        hora14.style.backgroundColor = "green";
-                                    } else {
-                                        hora14.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 13:
-                                    if (e.status_mensagem == "G") {
-                                        hora13.style.backgroundColor = "green";
-                                    } else {
-                                        hora13.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 12:
-                                    if (e.status_mensagem == "G") {
-                                        hora12.style.backgroundColor = "green";
-                                    } else {
-                                        hora12.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 11:
-                                    if (e.status_mensagem == "G") {
-                                        hora11.style.backgroundColor = "green";
-                                    } else {
-                                        hora11.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 10:
-                                    if (e.status_mensagem == "G") {
-                                        hora10.style.backgroundColor = "green";
-                                    } else {
-                                        hora10.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 9:
-                                    if (e.status_mensagem == "G") {
-                                        hora9.style.backgroundColor = "green";
-                                    } else {
-                                        hora9.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 8:
-                                    if (e.status_mensagem == "G") {
-                                        hora8.style.backgroundColor = "green";
-                                    } else {
-                                        hora8.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 7:
-                                    if (e.status_mensagem == "G") {
-                                        hora7.style.backgroundColor = "green";
-                                    } else {
-                                        hora7.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 6:
-                                    if (e.status_mensagem == "G") {
-                                        hora6.style.backgroundColor = "green";
-                                    } else {
-                                        hora6.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 5:
-                                    if (e.status_mensagem == "G") {
-                                        hora5.style.backgroundColor = "green";
-                                    } else {
-                                        hora5.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 4:
-                                    if (e.status_mensagem == "G") {
-                                        hora4.style.backgroundColor = "green";
-                                    } else {
-                                        hora4.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 3:
-                                    if (e.status_mensagem == "G") {
-                                        hora3.style.backgroundColor = "green";
-                                    } else {
-                                        hora3.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 2:
-                                    if (e.status_mensagem == "G") {
-                                        hora2.style.backgroundColor = "green";
-                                    } else {
-                                        hora2.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 1:
-                                    if (e.status_mensagem == "G") {
-                                        hora1.style.backgroundColor = "green";
-                                    } else {
-                                        hora1.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                case 0:
-                                    if (e.status_mensagem == "G") {
-                                        hora0.style.backgroundColor = "green";
-                                    } else {
-                                        hora0.style.backgroundColor = "yellow";
-                                        obs.innerText = "Erro na recepção dos dados.";
-                                    }
-                                    break;
-                                default:
+                                }
+                                // Se não possuir registros de dados estilizar com vermelho
+                                if (e.length == 0) {
+                                    hora0.style.backgroundColor = "red";
+                                    hora1.style.backgroundColor = "red";
+                                    hora2.style.backgroundColor = "red";
+                                    hora3.style.backgroundColor = "red";
+                                    hora4.style.backgroundColor = "red";
+                                    hora5.style.backgroundColor = "red";
+                                    hora6.style.backgroundColor = "red";
+                                    hora7.style.backgroundColor = "red";
+                                    hora8.style.backgroundColor = "red";
+                                    hora9.style.backgroundColor = "red";
+                                    hora10.style.backgroundColor = "red";
+                                    hora11.style.backgroundColor = "red";
+                                    hora12.style.backgroundColor = "red";
+                                    hora13.style.backgroundColor = "red";
+                                    hora14.style.backgroundColor = "red";
+                                    hora15.style.backgroundColor = "red";
+                                    hora16.style.backgroundColor = "red";
+                                    hora17.style.backgroundColor = "red";
+                                    hora18.style.backgroundColor = "red";
+                                    hora19.style.backgroundColor = "red";
+                                    hora20.style.backgroundColor = "red";
+                                    hora21.style.backgroundColor = "red";
+                                    hora22.style.backgroundColor = "red";
+                                    hora23.style.backgroundColor = "red";
+                                    obs.innerText = "Sem dados..";
+                                }
+                                // Formatação das colunas especificadas
+                                td_estacao.classList.add("largura-coluna", "text-center");
+                                td_tipo.classList.add("text-center");
+                                obs.classList.add("largura-coluna", "text-center");
 
-                                    break;
+                                // Montagem da tabela
+                                tr.appendChild(td_estacao);
+                                tr.appendChild(td_tipo);
+                                tr.appendChild(hora0);
+                                tr.appendChild(hora1);
+                                tr.appendChild(hora2);
+                                tr.appendChild(hora3);
+                                tr.appendChild(hora4);
+                                tr.appendChild(hora5);
+                                tr.appendChild(hora6);
+                                tr.appendChild(hora7);
+                                tr.appendChild(hora8);
+                                tr.appendChild(hora9);
+                                tr.appendChild(hora10);
+                                tr.appendChild(hora11);
+                                tr.appendChild(hora12);
+                                tr.appendChild(hora13);
+                                tr.appendChild(hora14);
+                                tr.appendChild(hora15);
+                                tr.appendChild(hora16);
+                                tr.appendChild(hora17);
+                                tr.appendChild(hora18);
+                                tr.appendChild(hora19);
+                                tr.appendChild(hora20);
+                                tr.appendChild(hora21);
+                                tr.appendChild(hora22);
+                                tr.appendChild(hora23);
+                                tr.appendChild(obs);
+                                tbody.appendChild(tr);
+                                tabela.appendChild(tbody);
                             }
-                        }
-                        if (c.length == 0) {
-                            hora0.style.backgroundColor = "red";
-                            hora1.style.backgroundColor = "red";
-                            hora2.style.backgroundColor = "red";
-                            hora3.style.backgroundColor = "red";
-                            hora4.style.backgroundColor = "red";
-                            hora5.style.backgroundColor = "red";
-                            hora6.style.backgroundColor = "red";
-                            hora7.style.backgroundColor = "red";
-                            hora8.style.backgroundColor = "red";
-                            hora9.style.backgroundColor = "red";
-                            hora10.style.backgroundColor = "red";
-                            hora11.style.backgroundColor = "red";
-                            hora12.style.backgroundColor = "red";
-                            hora13.style.backgroundColor = "red";
-                            hora14.style.backgroundColor = "red";
-                            hora15.style.backgroundColor = "red";
-                            hora16.style.backgroundColor = "red";
-                            hora17.style.backgroundColor = "red";
-                            hora18.style.backgroundColor = "red";
-                            hora19.style.backgroundColor = "red";
-                            hora20.style.backgroundColor = "red";
-                            hora21.style.backgroundColor = "red";
-                            hora22.style.backgroundColor = "red";
-                            hora23.style.backgroundColor = "red";
-                            obs.innerText = "Sem dados..";
-                        }
 
-                        td_estacao.classList.add("largura-coluna", "text-center");
-                        td_tipo.classList.add("text-center");
-                        obs.classList.add("largura-coluna", "text-center");
+                            //console.log(estacoes);
+                            console.log(transmissoes);
 
-                        tr.appendChild(td_estacao);
-                        tr.appendChild(td_tipo);
-                        tr.appendChild(hora0);
-                        tr.appendChild(hora1);
-                        tr.appendChild(hora2);
-                        tr.appendChild(hora3);
-                        tr.appendChild(hora4);
-                        tr.appendChild(hora5);
-                        tr.appendChild(hora6);
-                        tr.appendChild(hora7);
-                        tr.appendChild(hora8);
-                        tr.appendChild(hora9);
-                        tr.appendChild(hora10);
-                        tr.appendChild(hora11);
-                        tr.appendChild(hora12);
-                        tr.appendChild(hora13);
-                        tr.appendChild(hora14);
-                        tr.appendChild(hora15);
-                        tr.appendChild(hora16);
-                        tr.appendChild(hora17);
-                        tr.appendChild(hora18);
-                        tr.appendChild(hora19);
-                        tr.appendChild(hora20);
-                        tr.appendChild(hora21);
-                        tr.appendChild(hora22);
-                        tr.appendChild(hora23);
-                        tr.appendChild(obs);
-                        tbody.appendChild(tr);
-                        tabela.appendChild(tbody);
-                    }
-                    //console.log(estacao);
-                    console.log(transmissoes);
+                            // Formatando a tabela
+                            tabela.classList.add("table", "table-sm", "table-striped", "table-bordered", "border-dark");
 
-                    // Formatando a tabela
-                    tabela.classList.add("table", "table-sm", "table-striped", "table-bordered", "border-dark");
-
-                    // Inserir a tabela na div
-                    document.getElementById("tabeladinamica").appendChild(tabela);
-                })
-                .catch(error => { console.error("Erro do gerar tabela: ", error) });
+                            // Inserir a tabela na div
+                            document.getElementById("tabeladinamica").appendChild(tabela);
+                        });
+                });
         }
+
         function limpardiv() {
             const box = document.getElementById("tabeladinamica");
             box.innerHTML = "";
