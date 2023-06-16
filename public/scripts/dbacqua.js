@@ -76,8 +76,8 @@ async function selectTransmissoes() {
         const [estacao_1221] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1221 AND hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
         const [estacao_1222] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1222 AND hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
         const [estacao_1229] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1229 AND hora_transmissao BETWEEN '2023-06-01' AND '2023-06-01 23:59:59';");
-        const [estacao_1226] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1229 AND hora_transmissao BETWEEN '2023-06-02' AND '2023-06-02 23:59:59';");
-        return [estacao_1221];
+        const [estacao_1226] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1229 AND hora_transmissao BETWEEN '2023-06-17' AND '2023-06-17 23:59:59';");
+        return [estacao_1221, estacao_1222, estacao_1229, estacao_1226];
     } catch (error) {
         console.log(error);
     }
