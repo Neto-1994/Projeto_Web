@@ -452,8 +452,6 @@ async function gerartabela() {
                         tbody.appendChild(tr);
                         tabela.appendChild(tbody);
                     }
-                    //console.log("Estacoes: ", estacoes);
-                    console.log("Transmissoes: ", transmissoes);
 
                     // Formatando a tabela
                     tabela.classList.add("table", "table-sm", "table-striped", "table-bordered", "border-dark");
