@@ -1,35 +1,29 @@
 const mysql = require("mysql2/promise");
 
 // Conexão com o Banco de dados
-async function connect() {
-    const connection = await mysql.createConnection({
+async function connect_local() {
+    if (global.connection_local && global.connection_local.state !== "disconnected")
+        return global.connection_local;
+
+    const connection_local = await mysql.createConnection({
         host: "localhost",
         user: "root",
         password: "123456",
         database: "usuarios",
         port: 3306
     });
-    return connection;
+    global.connection_local = connection_local;
+    return connection_local;
 };
 
-async function selectCustomers(nome, senha) {
-    const conn = await connect();
+async function selectUser(nome) {
+    const conn = await connect_local();
     const sql = ("SELECT * FROM cadastros WHERE Nome = ?;");
     const values = [nome];
-    const [results] = await conn.query(sql, values);
+    const [resultado] = await conn.query(sql, values);
 
-    return new Promise((resolve, reject) => {
-        if (results != 0) {
-            const cadastros = results[0];
-            if (senha != null && senha === cadastros.Senha) {
-                resolve("Autorizado");
-            } else {
-                reject("Senha");
-            }
-        } else {
-            reject("Usuario");
-        }
-    });
+    if (resultado.length > 0) return resultado;
+    else return null;
 };
 /*
 async function selectCustomers(){
@@ -39,6 +33,7 @@ async function selectCustomers(){
 }
 */
 async function insertCustomer(customer) {
+    //var senha = bcrypt.hashSync(variavel com valor para gerar hash);
     const conn = await connect();
     const sql = ("INSERT INTO cadastros(Nome,Senha) VALUES (?,?);");
     const values = [customer.nome, customer.senha];
@@ -58,4 +53,4 @@ async function deleteCustomer(id) {
     return await conn.query(sql, id);
 }
 
-module.exports = { selectCustomers, insertCustomer, updateCustomer, deleteCustomer };
+module.exports = { selectUser, insertCustomer, updateCustomer, deleteCustomer };

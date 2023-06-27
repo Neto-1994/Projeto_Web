@@ -1,13 +1,21 @@
 // Importações
-var express = require('express');
+const express = require('express');
 const session = require('express-session');
-var bodyparser = require('body-parser');
-var path = require('path');
+const bodyparser = require('body-parser');
+const path = require('path');
+const passport = require('passport');
+require("./public/scripts/auth.js")(passport);
 const db = require("./public/scripts/db.js");
 const dbacqua = require("./public/scripts/dbacqua.js");
 
 // Porta
 porta = 3000;
+
+// Middleware redirecionamento de acessos
+function authenticateMiddleware(req, res, next) {
+    if(req.isAuthenticated()) return next();
+    res.redirect("/login");
+};
 
 // Objeto para funcionalidades do Express
 var app = express();
@@ -16,60 +24,34 @@ var app = express();
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({ extended: false }));
 
-// Apontando para diretorio de arquivos estaticos
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-app.use('/public', express.static(path.join(__dirname, 'public')));
+// Configuração para as views
 app.set('views', path.join(__dirname, '/views'));
+app.set('view engine', 'html');
+app.engine('html', require('ejs').renderFile);
+
+// Configurações
+app.use(express.json());
+app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(session({
-    secret: "sessionusuario",
-    name: "acesso",
-    //store: sessionStore, // connect-mongo session store
+    secret: "123",
+    //name: "acesso", // Nome para a sessão cookie
     proxy: false,
     resave: false,
-    saveUninitialized: false
+    saveUninitialized: false,
+    cookie: { maxAge: 1 * 60 * 1000 }, // 1 min
 }));
 
-app.get('/', function (req, res) {
-    if (req.session.usuario) {
-        res.render("pagina");
-    } else {
-        res.render("index");
-    }
-});
+app.use(passport.authenticate("session"));
 
-app.post('/', function (req, res) {
-    db.selectCustomers(req.body.usuario, req.body.senha)
-        .then(retorno => {
-            if (retorno == "Autorizado") {
-                req.session.usuario = req.body.usuario;
-                res.render("pagina", { nome: req.session.usuario });
-            }
-        })
-        .catch(erro => {
-            if (erro == "Senha") {
-                res.render("index");
-            } else {
-                res.render("index");
-            }
-        });
-});
+// Rotas
+var login = require("./routes/login.js");
+var pagina = require("./routes/pagina.js");
+var qd = require("./routes/qualidadedados.js");
 
-app.get('/dados', function (req, res) {
-    if (req.session.usuario) {
-        res.render("Visualizacao_Dados", { nome: req.session.usuario });
-    } else {
-        res.redirect("/");
-    }
-});
-
-app.get('/qualidadedados', function (req, res) {
-    if (req.session.usuario == null) {
-        res.redirect("/");
-    } else {
-        res.render("Qualidade_Dados", { nome: req.session.usuario });
-    }
-});
+// Direcionamento das rotas
+app.use("/login", login);
+app.use("/", authenticateMiddleware, pagina);
+app.use("/qualidadedados", authenticateMiddleware, qd);
 
 app.get('/qualidadedados/estacoes', async function (req, res) {
     const estacoes = await dbacqua.selectEstacoes();
@@ -81,11 +63,17 @@ app.get('/qualidadedados/transmissoes', async function (req, res) {
     res.json(transmissoes);
 });
 
-app.get('/sair', function (req, res) {
-    req.session.usuario = null;
-    res.redirect("/");
-});
-
+/*app.get('/sair', function (req, res, next) {
+    req.session.destroy(function (err) {
+        if(err) {
+            console.log("Erro ao destruir sessão: ", err);
+            return next(err);
+        } else {
+            // res.clearCookie(req.session.user);
+            res.redirect("/login");
+        }
+    });
+});*/
 
 // Servidor
 app.listen(porta);
