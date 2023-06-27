@@ -14,15 +14,15 @@
     <div class="container">
         <div class="container-login">
             <div class="wrap.login">
-                <form action="/" method="post" class="login-form">
+                <form action="/login" method="post" class="login-form">
                     <span class="login-form-title">
                         Faça o login
                     </span>
                     <% if(message) { %>
                         <p>
-                            <label id="message" class="label-error">
+                            <span id="message" class="error-usuario">
                                 <%= message %>
-                            </label>
+                            </span>
                         </p>
                         <% } %>
                             <div class="wrap-input margin-top-35 margin-bottom-35">

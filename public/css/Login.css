@@ -10,6 +10,8 @@
     --white-color: #FFFFFF;
     --points-list: #CCCCCC;
     --line-input: #D9D9D9;
+    --background-alert-color: rgba(255, 0, 0, 0.2);
+    --alert-border-color: #FF0000;
 }
 
 /*
@@ -314,11 +316,22 @@ span.error {
     font-size: 1rem;
     display:flex;
     padding: 0;
-    background-color: rgba(255, 0, 0, 0.2);
+    background-color: var(--background-alert-color);
 }
 
 
 span.error.active {
-    border: 0.1rem solid red;
+    border: 0.1rem solid var(--alert-border-color);
     padding: 0.4rem;
+}
+
+span.error-usuario {
+    background-color: var(--background-alert-color);
+    border: 0.1rem solid var(--alert-border-color);
+    padding: 0.4rem;
+    margin-top: 0.4rem;
+    font-family: Poppins-Regular;
+    font-size: 1rem;
+    text-align: center;
+    display: flex;
 }

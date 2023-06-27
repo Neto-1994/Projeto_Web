@@ -1,57 +1,33 @@
-const express = require('express');
-const passport = require('passport');
-const localstrategy = require('passport-local');
-const bcrypt = require("bcryptjs");
-const router = express.Router();
+const LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcryptjs');
 const db = require("./db.js");
 
-/*
-function findUser(nome) {
-    return results.find(item => item.nome === nome);
-}
+module.exports = function (passport) {
+    passport.serializeUser((user, done) => {
+        done(null, user.id);
+    });
 
-passport.serializeUser((user, done) => {
-    done(null, user.id);
-})*/
+    passport.deserializeUser((user, done) => {
+        done(null, user);
+    });
 
-passport.use(new localstrategy(function verificar(nome, senha, retorno) {
-    let consulta = db.selectCustomers(nome);
-    (err, row) => {
-        if (err) { return retorno(err); }
-        if (!row) { return retorno(null, false, { message: "Incorreto usuário ou senha.." }); }
-
-        const isValid = bcrypt.compareSync(senha, consulta.senha);
-        if (!isValid) return retorno(null, false, { message: "Incorreto usuário ou senha.." });
-
-        return retorno(null, row);
-    }
-}));
-
-router.get('/', function (req, res, next) {
-    res.render("login");
-});
-
-router.post('login/senha', passport.authenticate('local', {
-    successRedirect: '/pagina',
-    failureRedirect: '/login'
-}));
-
-/*usernameField: "usuario",
-    passwordField: "senha"
+    passport.use(new LocalStrategy({
+        usernameField: "usuario",
+        passwordField: "senha"
     },
-(nome, senha, done) => {
-    try {
-        const user = findUser(nome);
-        if (!user) return done(null, false);
+        async (nome, senha, done) => {
+            try {
+                var user = await db.selectUser(nome);
 
-        const isValid = bcrypt.compareSync(senha, results.senha);
-        if (!isValid) return done(null, false);
-        return done(null, user);
+                if (!user) return done(null, false, "usuario");
 
-    } catch (err) {
-        console.log(err);
-        return done(err, false);
-    }
-}));*/
+                // let isValid = bcrypt.compareSync(senha, user[0].Senha);
+                if (senha != user[0].Senha) return done(null, false, "senha");
 
-module.exports = router;
+                return done(null, user);
+            } catch (err) {
+                return done(err, false);
+            }
+        }
+    ));
+};

@@ -20,7 +20,8 @@ router.post("/", function (req, res, next) {
                 return res.render("login", { message: "Senha incorreta.." });
             }
         }
-        res.render("pagina", { nome: n });
+        res.render("pagina", { nome: req.session.user });
+    
     })(req, res, next);
 });
 

@@ -5,7 +5,6 @@ const bodyparser = require('body-parser');
 const path = require('path');
 const passport = require('passport');
 require("./public/scripts/auth.js")(passport);
-const db = require("./public/scripts/db.js");
 const dbacqua = require("./public/scripts/dbacqua.js");
 
 // Porta
@@ -38,7 +37,7 @@ app.use(session({
     proxy: false,
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 1 * 60 * 1000 }, // 1 min
+    cookie: { maxAge: 30 * 60 * 1000 }, // 30 min
 }));
 
 app.use(passport.authenticate("session"));
@@ -51,8 +50,9 @@ var qd = require("./routes/qualidadedados.js");
 // Direcionamento das rotas
 app.use("/login", login);
 app.use("/", authenticateMiddleware, pagina);
+app.use("/pagina", authenticateMiddleware, pagina);
 app.use("/qualidadedados", authenticateMiddleware, qd);
-
+/*
 app.get('/qualidadedados/estacoes', async function (req, res) {
     const estacoes = await dbacqua.selectEstacoes();
     res.json(estacoes);
@@ -62,7 +62,7 @@ app.get('/qualidadedados/transmissoes', async function (req, res) {
     const transmissoes = await dbacqua.selectTransmissoes();
     res.json(transmissoes);
 });
-
+*/
 /*app.get('/sair', function (req, res, next) {
     req.session.destroy(function (err) {
         if(err) {

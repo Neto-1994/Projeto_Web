@@ -25,6 +25,7 @@ function ValidarCampo(campo) {
 
     function setMensagemCustomizada(message) {
         const spanError = campo.parentNode.querySelector("span.error");
+        
         if (message) {
             spanError.classList.add("active");
             spanError.innerHTML = message;
