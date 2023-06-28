@@ -4,11 +4,15 @@ const db = require("./db.js");
 
 module.exports = function (passport) {
     passport.serializeUser((user, done) => {
-        done(null, user.id);
+        process.nextTick(function () {
+            done(null, { id: user.id, username: user.Nome });
+        });
     });
 
     passport.deserializeUser((user, done) => {
-        done(null, user);
+        process.nextTick(function () {
+            done(null, user);
+        });
     });
 
     passport.use(new LocalStrategy({

@@ -12,7 +12,8 @@ porta = 3000;
 
 // Middleware redirecionamento de acessos
 function authenticateMiddleware(req, res, next) {
-    if(req.isAuthenticated()) return next();
+    console.log("Authenticate: ", req.session.user);
+    if (req.session.user) return next();
     res.redirect("/login");
 };
 
@@ -44,14 +45,15 @@ app.use(passport.authenticate("session"));
 
 // Rotas
 var login = require("./routes/login.js");
+var sair = require("./routes/sair.js");
 var pagina = require("./routes/pagina.js");
 var qd = require("./routes/qualidadedados.js");
 
 // Direcionamento das rotas
 app.use("/login", login);
 app.use("/", authenticateMiddleware, pagina);
-app.use("/pagina", authenticateMiddleware, pagina);
 app.use("/qualidadedados", authenticateMiddleware, qd);
+app.use("/sair", sair);
 /*
 app.get('/qualidadedados/estacoes', async function (req, res) {
     const estacoes = await dbacqua.selectEstacoes();
@@ -63,17 +65,6 @@ app.get('/qualidadedados/transmissoes', async function (req, res) {
     res.json(transmissoes);
 });
 */
-/*app.get('/sair', function (req, res, next) {
-    req.session.destroy(function (err) {
-        if(err) {
-            console.log("Erro ao destruir sessão: ", err);
-            return next(err);
-        } else {
-            // res.clearCookie(req.session.user);
-            res.redirect("/login");
-        }
-    });
-});*/
 
 // Servidor
 app.listen(porta);

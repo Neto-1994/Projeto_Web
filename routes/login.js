@@ -8,10 +8,7 @@ router.get("/", function (req, res, next) {
 
 router.post("/", function (req, res, next) {
     passport.authenticate('local', function (err, user, info, status) {
-        var n = req.body.usuario;
-        req.session.user = n;
-        // console.log("Nome da sessao: ", req.session);
-
+        
         if (err) { return next(err) };
         if (!user) {
             if (info == "usuario") {
@@ -20,8 +17,11 @@ router.post("/", function (req, res, next) {
                 return res.render("login", { message: "Senha incorreta.." });
             }
         }
-        res.render("pagina", { nome: req.session.user });
-    
+        if (user) {
+            var n = req.body.usuario;
+            req.session.user = n;
+            res.redirect("/");
+        }
     })(req, res, next);
 });
 
