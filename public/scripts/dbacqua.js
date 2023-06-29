@@ -87,6 +87,7 @@ async function selectTransmissoes() {
         const [estacao_1245] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1229 AND Dt_Medicao BETWEEN '2023-06-01' AND '2023-06-01 23:59:59' AND Dt_Medicao LIKE '%:00:00';");
         const [estacao_1246] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1229 AND Dt_Medicao BETWEEN '2023-06-05' AND '2023-06-05 23:59:59' AND Dt_Medicao LIKE '%:00:00';");
         const [estacao_1247] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1229 AND Dt_Medicao BETWEEN '2023-06-09' AND '2023-06-09 23:59:59' AND Dt_Medicao LIKE '%:00:00';");
+        conn.end();
         return [estacao_1221, estacao_1222, estacao_1226, estacao_1227, estacao_1228, estacao_1229, estacao_1230,
             estacao_1231, estacao_1232, estacao_1243, estacao_1244, estacao_1245, estacao_1246, estacao_1247];
         } catch (error) {

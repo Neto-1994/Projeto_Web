@@ -260,31 +260,7 @@ async function gerartabela() {
                                         hora21.style.backgroundColor = "MediumSeaGreen";
                                         break;
                                     default:
-                                        hora0.style.backgroundColor = "FireBrick";
-                                        hora1.style.backgroundColor = "FireBrick";
-                                        hora2.style.backgroundColor = "FireBrick";
-                                        hora3.style.backgroundColor = "FireBrick";
-                                        hora4.style.backgroundColor = "FireBrick";
-                                        hora5.style.backgroundColor = "FireBrick";
-                                        hora6.style.backgroundColor = "FireBrick";
-                                        hora7.style.backgroundColor = "FireBrick";
-                                        hora8.style.backgroundColor = "FireBrick";
-                                        hora9.style.backgroundColor = "FireBrick";
-                                        hora10.style.backgroundColor = "FireBrick";
-                                        hora11.style.backgroundColor = "FireBrick";
-                                        hora12.style.backgroundColor = "FireBrick";
-                                        hora13.style.backgroundColor = "FireBrick";
-                                        hora14.style.backgroundColor = "FireBrick";
-                                        hora15.style.backgroundColor = "FireBrick";
-                                        hora16.style.backgroundColor = "FireBrick";
-                                        hora17.style.backgroundColor = "FireBrick";
-                                        hora18.style.backgroundColor = "FireBrick";
-                                        hora19.style.backgroundColor = "FireBrick";
-                                        hora20.style.backgroundColor = "FireBrick";
-                                        hora21.style.backgroundColor = "FireBrick";
-                                        hora22.style.backgroundColor = "FireBrick";
-                                        hora23.style.backgroundColor = "FireBrick";
-                                        obs.innerText = "Sem dados..";
+
                                         break;
                                 }
                             };
@@ -354,7 +330,7 @@ async function gerartabela() {
                         tbody.appendChild(tr);
                         tabela.appendChild(tbody);
                     }
-                    console.log(transmissoes);
+
                     // Formatando a tabela
                     tabela.classList.add("table", "table-sm", "table-striped", "table-bordered", "border-dark");
 
