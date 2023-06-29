@@ -21,8 +21,5 @@ Instalação do EJS para trabalhar com a parte dinâmica das páginas e reutiliz
 Biblioteca para encriptar dados, e comparar valores..
 *** npm i bcryptjs
 
-Módulo para armazenar mensagens temporárias..
-*** npm i connect-flash
-
 Middleware de autenticação..
 *** npm i passport passport-local

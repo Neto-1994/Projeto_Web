@@ -1,23 +1,19 @@
 const mysql = require("mysql2/promise");
 
 // Conexão com o Banco de dados
-async function connect_local() {
-    if (global.connection_local && global.connection_local.state !== "disconnected")
-        return global.connection_local;
-
-    const connection_local = await mysql.createConnection({
+async function connect() {
+    const connection = await mysql.createConnection({
         host: "localhost",
         user: "root",
         password: "123456",
         database: "usuarios",
         port: 3306
     });
-    global.connection_local = connection_local;
-    return connection_local;
+    return connection;
 };
 
 async function selectUser(nome) {
-    const conn = await connect_local();
+    const conn = await connect();
     const sql = ("SELECT * FROM cadastros WHERE Nome = ?;");
     const values = [nome];
     const [resultado] = await conn.query(sql, values);

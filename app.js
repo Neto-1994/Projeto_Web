@@ -12,7 +12,6 @@ porta = 3000;
 
 // Middleware redirecionamento de acessos
 function authenticateMiddleware(req, res, next) {
-    console.log("Authenticate: ", req.session.user);
     if (req.session.user) return next();
     res.redirect("/login");
 };
@@ -54,7 +53,7 @@ app.use("/login", login);
 app.use("/", authenticateMiddleware, pagina);
 app.use("/qualidadedados", authenticateMiddleware, qd);
 app.use("/sair", sair);
-/*
+
 app.get('/qualidadedados/estacoes', async function (req, res) {
     const estacoes = await dbacqua.selectEstacoes();
     res.json(estacoes);
@@ -64,7 +63,6 @@ app.get('/qualidadedados/transmissoes', async function (req, res) {
     const transmissoes = await dbacqua.selectTransmissoes();
     res.json(transmissoes);
 });
-*/
 
 // Servidor
 app.listen(porta);

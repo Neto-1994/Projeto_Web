@@ -73,23 +73,23 @@ async function selectEstacoes() {
 async function selectTransmissoes() {
     try {
         const conn = await connect();
-        const [estacao_1221] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1221 AND hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
-        const [estacao_1222] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1222 AND hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
-        const [estacao_1226] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1226 AND hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
-        const [estacao_1227] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1227 AND hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
-        const [estacao_1228] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1228 AND hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
-        const [estacao_1229] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1229 AND hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
-        const [estacao_1230] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1230 AND hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
-        const [estacao_1231] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1231 AND hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
-        const [estacao_1232] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1232 AND hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
-        const [estacao_1243] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1243 AND hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
-        const [estacao_1244] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1244 AND hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
-        const [estacao_1245] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1245 AND hora_transmissao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR);");
-        const [estacao_1246] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1229 AND hora_transmissao BETWEEN '2023-06-01' AND '2023-06-01 23:59:59';");
-        const [estacao_1247] = await conn.query("SELECT hora_transmissao, status_mensagem FROM mensagens WHERE codigo_sec = 1229 AND hora_transmissao BETWEEN '2023-06-05' AND '2023-06-05 23:59:59';");
+        const [estacao_1221] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1221 AND Dt_Medicao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR) AND Dt_Medicao LIKE '%:00:00';");
+        const [estacao_1222] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1222 AND Dt_Medicao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR) AND Dt_Medicao LIKE '%:00:00';");
+        const [estacao_1226] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1226 AND Dt_Medicao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR) AND Dt_Medicao LIKE '%:00:00';");
+        const [estacao_1227] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1227 AND Dt_Medicao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR) AND Dt_Medicao LIKE '%:00:00';");
+        const [estacao_1228] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1228 AND Dt_Medicao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR) AND Dt_Medicao LIKE '%:00:00';");
+        const [estacao_1229] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1229 AND Dt_Medicao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR) AND Dt_Medicao LIKE '%:00:00';");
+        const [estacao_1230] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1230 AND Dt_Medicao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR) AND Dt_Medicao LIKE '%:00:00';");
+        const [estacao_1231] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1231 AND Dt_Medicao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR) AND Dt_Medicao LIKE '%:00:00';");
+        const [estacao_1232] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1232 AND Dt_Medicao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR) AND Dt_Medicao LIKE '%:00:00';");
+        const [estacao_1243] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1243 AND Dt_Medicao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR) AND Dt_Medicao LIKE '%:00:00';");
+        const [estacao_1244] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1244 AND Dt_Medicao >= DATE_SUB(CURRENT_TIME(),INTERVAL 24 HOUR) AND Dt_Medicao LIKE '%:00:00';");
+        const [estacao_1245] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1229 AND Dt_Medicao BETWEEN '2023-06-01' AND '2023-06-01 23:59:59' AND Dt_Medicao LIKE '%:00:00';");
+        const [estacao_1246] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1229 AND Dt_Medicao BETWEEN '2023-06-05' AND '2023-06-05 23:59:59' AND Dt_Medicao LIKE '%:00:00';");
+        const [estacao_1247] = await conn.query("SELECT Dt_Medicao FROM medicoes WHERE codigo_sec = 1229 AND Dt_Medicao BETWEEN '2023-06-09' AND '2023-06-09 23:59:59' AND Dt_Medicao LIKE '%:00:00';");
         return [estacao_1221, estacao_1222, estacao_1226, estacao_1227, estacao_1228, estacao_1229, estacao_1230,
             estacao_1231, estacao_1232, estacao_1243, estacao_1244, estacao_1245, estacao_1246, estacao_1247];
-    } catch (error) {
+        } catch (error) {
         console.log(error);
     }
 };
