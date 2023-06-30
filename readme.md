@@ -23,3 +23,6 @@ Biblioteca para encriptar dados, e comparar valores..
 
 Middleware de autenticação..
 *** npm i passport passport-local
+
+Ferramenta para orquestrar as variáveis ambiente de um projeto..
+*** npm i dotenv

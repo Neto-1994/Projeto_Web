@@ -1,6 +1,7 @@
 // Importações
 const express = require('express');
 const session = require('express-session');
+require('dotenv').config();
 const bodyparser = require('body-parser');
 const path = require('path');
 const passport = require('passport');
@@ -32,7 +33,7 @@ app.engine('html', require('ejs').renderFile);
 app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(session({
-    secret: "123",
+    secret: process.env.SECRET_SESSION,
     //name: "acesso", // Nome para a sessão cookie
     proxy: false,
     resave: false,

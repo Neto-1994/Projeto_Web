@@ -1,4 +1,5 @@
 const mysql = require("mysql2/promise");
+
 // Conexão com o Banco de dados
 async function connect() {
     if (global.connection && global.connection.state !== 'disconnected') {
