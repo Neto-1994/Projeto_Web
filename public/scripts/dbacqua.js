@@ -1,21 +1,17 @@
 const mysql = require("mysql2/promise");
+require('dotenv').config();
 
 // Conexão com o Banco de dados
-async function connect() {
-    if (global.connection && global.connection.state !== 'disconnected') {
-        return global.connection;
-    } else {
-        const connection = await mysql.createConnection({
-            host: "159.203.44.241",
-            user: "cris",
-            password: "Acqua@cris2019",
-            database: "acqua",
-            port: 64306
-        });
-        global.connection = connection;
-        console.log("Conectou no banco de dados acqua..");
-        return connection;
-    }
+function connect() {
+    const connection = mysql.createConnection({
+        host: process.env.HOST,
+        user: process.env.USER,
+        password: process.env.PASSWORD,
+        database: process.env.DATABASE,
+        port: process.env.PORT
+    });
+    console.log("Conectou no banco de dados acqua..");
+    return connection;
 };
 
 async function selectMedicoes() {
@@ -65,6 +61,7 @@ async function selectEstacoes() {
     try {
         const conn = await connect();
         const [estacoes] = await conn.query("SELECT Nome_Estacao, Tipo_Estacao FROM estacoes WHERE Nome_Estacao LIKE '%Maraca%' AND Codigo_goes is not null;");
+        conn.end();
         return estacoes;
     } catch (error) {
         console.log(error);
@@ -91,7 +88,7 @@ async function selectTransmissoes() {
         conn.end();
         return [estacao_1221, estacao_1222, estacao_1226, estacao_1227, estacao_1228, estacao_1229, estacao_1230,
             estacao_1231, estacao_1232, estacao_1243, estacao_1244, estacao_1245, estacao_1246, estacao_1247];
-        } catch (error) {
+    } catch (error) {
         console.log(error);
     }
 };
