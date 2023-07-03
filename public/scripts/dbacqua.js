@@ -10,7 +10,6 @@ async function connect() {
         database: process.env.DATABASE,
         port: process.env.PORT
     });
-    console.log("Conectou no banco de dados acqua..");
     return connection;
 };
 

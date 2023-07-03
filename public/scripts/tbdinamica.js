@@ -1,7 +1,10 @@
 async function gerartabela() {
-
-    limpardiv();
-    const date = new Date();
+    // Buscar a referência da div HTML
+    const box = document.getElementById("tabeladinamica");
+    // Limpar
+    box.innerHTML = "";
+    // Adicionar ícone de carregando
+    box.classList.add("loading");
 
     // Busca das informações das estações
     fetch("qualidadedados/estacoes")
@@ -178,7 +181,35 @@ async function gerartabela() {
 
                         // Verifica a posição 'e' em relação a variável transmissoes
                         if (e < transmissoes.length) {
-                            // Verifica o tamanho de transmissoes[e]
+                            // Verifica o tamanho do array, e se necessário estiliza os campos
+                            if (transmissoes[e].length < 23) {
+                                hora0.style.backgroundColor = "Khaki";
+                                hora1.style.backgroundColor = "Khaki";
+                                hora2.style.backgroundColor = "Khaki";
+                                hora3.style.backgroundColor = "Khaki";
+                                hora4.style.backgroundColor = "Khaki";
+                                hora5.style.backgroundColor = "Khaki";
+                                hora6.style.backgroundColor = "Khaki";
+                                hora7.style.backgroundColor = "Khaki";
+                                hora8.style.backgroundColor = "Khaki";
+                                hora9.style.backgroundColor = "Khaki";
+                                hora10.style.backgroundColor = "Khaki";
+                                hora11.style.backgroundColor = "Khaki";
+                                hora12.style.backgroundColor = "Khaki";
+                                hora13.style.backgroundColor = "Khaki";
+                                hora14.style.backgroundColor = "Khaki";
+                                hora15.style.backgroundColor = "Khaki";
+                                hora16.style.backgroundColor = "Khaki";
+                                hora17.style.backgroundColor = "Khaki";
+                                hora18.style.backgroundColor = "Khaki";
+                                hora19.style.backgroundColor = "Khaki";
+                                hora20.style.backgroundColor = "Khaki";
+                                hora21.style.backgroundColor = "Khaki";
+                                hora22.style.backgroundColor = "Khaki";
+                                hora23.style.backgroundColor = "Khaki";
+                                obs.innerText = "Falha na recepção..";
+                            };
+                            // Percorre o objeto de posição transmissoes[e]
                             for (let i = 0; i < transmissoes[e].length; i++) {
                                 // Conversão do horário UTC transmitido para horário local (UTC - 3)
                                 let hora_tr = new Date(transmissoes[e][i].Dt_Medicao)
@@ -333,15 +364,10 @@ async function gerartabela() {
 
                     // Formatando a tabela
                     tabela.classList.add("table", "table-sm", "table-striped", "table-bordered", "border-dark");
-
+                    // Remover ícone de carregando
+                    box.classList.remove("loading");
                     // Inserir a tabela na div
-                    document.getElementById("tabeladinamica").appendChild(tabela);
+                    box.appendChild(tabela);
                 });
         });
-}
-
-// Limpar tabela da div
-function limpardiv() {
-    const box = document.getElementById("tabeladinamica");
-    box.innerHTML = "";
 }

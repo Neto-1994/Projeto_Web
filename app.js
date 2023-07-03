@@ -38,7 +38,7 @@ app.use(session({
     proxy: false,
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 30 * 60 * 1000 }, // 30 min
+    cookie: { maxAge: 30 * 60 * 1000 }, // 30 min /*12*60*60*1000 12h*/
 }));
 
 app.use(passport.authenticate("session"));
