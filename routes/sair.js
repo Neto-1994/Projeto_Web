@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get("/", function (req, res, next) {
     req.session.destroy(function (err) {
-        if(err) {
+        if (err) {
             console.log("Erro ao destruir sessão: ", err);
             return next(err);
         } else {

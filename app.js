@@ -32,6 +32,8 @@ app.engine('html', require('ejs').renderFile);
 // Configurações
 app.use(express.json());
 app.use('/public', express.static(path.join(__dirname, 'public')));
+
+// Configurações da sessão
 app.use(session({
     secret: process.env.SECRET_SESSION,
     //name: "acesso", // Nome para a sessão cookie
@@ -41,6 +43,14 @@ app.use(session({
     cookie: { maxAge: 30 * 60 * 1000 }, // 30 min /*12*60*60*1000 12h*/
 }));
 
+// Middleware para adicionar configuração a todas as respostas do servidor
+// Configuração para impedir retorno de páginas após sair
+app.use((req, res, next) => {
+    res.header("Cache-Control", "no-store");
+    next();
+});
+
+// Salvar a sessão do usuário
 app.use(passport.authenticate("session"));
 
 // Rotas
