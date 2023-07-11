@@ -18,9 +18,10 @@ async function gerartabela() {
             // Cabeçalho da tabela
             var tr1 = document.createElement("tr");
             var th1 = document.createElement("th");
-            var timeElapsed = Date.now();
-            var today = new Date(timeElapsed);
-            th1.innerHTML = today.toLocaleDateString();
+            var data = Date.now();
+            var hoje = new Date(data);
+            var hora = "h" + hoje.getHours();
+            th1.innerHTML = hoje.toLocaleDateString();
 
             // Formatando cabeçalho
             th1.style.backgroundColor = "silver";
@@ -103,32 +104,31 @@ async function gerartabela() {
             h22.innerHTML = "22h";
             var h23 = document.createElement("td");
             h23.innerHTML = "23h";
+            // Ambiente de teste rotatividade da tabela
+            var testeArray = [h0, h1, h2, h3, h4, h5, h6, h7, h8, h9, h10, h11, h12,
+                h13, h14, h15, h16, h17, h18, h19, h20, h21, h22, h23];
+
+
+            testeArray.sort(function (a, b) {
+                if (a == hora) {
+                    return 1; // Move o elemento da última posição para o final do array
+                } else if (b == hora) {
+                    return -1; // Move o elemento da última posição para o final do array
+                } else if (a > hora && b > hora) {
+                    return a.localeCompare(b); // Ordenação alfabética crescente para elementos maiores que a hora
+                } else if (a > hora) {
+                    return -1; // Move elementos maiores que a hora para o início do array
+                } else if (b > hora) {
+                    return 1; // Move elementos maiores que a hora para o início do array
+                } else {
+                    return a.localeCompare(b); // Ordenação alfabética crescente para os outros elementos
+                }
+            });
 
             // Adicionando células à linha tr3
-            tr3.appendChild(h0);
-            tr3.appendChild(h1);
-            tr3.appendChild(h2);
-            tr3.appendChild(h3);
-            tr3.appendChild(h4);
-            tr3.appendChild(h5);
-            tr3.appendChild(h6);
-            tr3.appendChild(h7);
-            tr3.appendChild(h8);
-            tr3.appendChild(h9);
-            tr3.appendChild(h10);
-            tr3.appendChild(h11);
-            tr3.appendChild(h12);
-            tr3.appendChild(h13);
-            tr3.appendChild(h14);
-            tr3.appendChild(h15);
-            tr3.appendChild(h16);
-            tr3.appendChild(h17);
-            tr3.appendChild(h18);
-            tr3.appendChild(h19);
-            tr3.appendChild(h20);
-            tr3.appendChild(h21);
-            tr3.appendChild(h22);
-            tr3.appendChild(h23);
+            /*
+            tr3.appendChild(h23);*/
+            console.log(testeArray);
 
             // Formatando linhas
             tr1.align = "center";
