@@ -27,4 +27,3 @@ Middleware de autenticação..
 Ferramenta para orquestrar as variáveis ambiente de um projeto..
 *** npm i dotenv
 
-Testando alteração no Git..

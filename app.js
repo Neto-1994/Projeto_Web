@@ -8,9 +8,6 @@ const passport = require('passport');
 require("./public/scripts/auth.js")(passport);
 const dbacqua = require("./public/scripts/dbacqua.js");
 
-// Porta
-porta = 3000;
-
 // Middleware redirecionamento de acessos
 function authenticateMiddleware(req, res, next) {
     if (req.session.user) return next();
@@ -76,4 +73,4 @@ app.get('/qualidadedados/transmissoes', async function (req, res) {
 });
 
 // Servidor
-app.listen(porta);
+app.listen(process.env.PORTA);
