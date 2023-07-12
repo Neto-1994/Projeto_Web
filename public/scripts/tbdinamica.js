@@ -439,4 +439,4 @@ async function gerartabela() {
         });
 };
 // Automatizar atualização da tabela
-//setInterval(gerartabela, 2400000); // 40 * 60 * 1000 40min
+//setInterval(gerartabela, 120000);// 2min /* 40 * 60 * 1000 40min 2400000 */
