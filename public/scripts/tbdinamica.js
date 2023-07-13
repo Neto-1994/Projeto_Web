@@ -223,9 +223,9 @@ async function gerartabela() {
                         if (e < transmissoes.length) {
                             // Verifica o tamanho do array, e se necessário estiliza os campos para atenção
                             if (transmissoes[e].length < 23) {
-                                Campos.forEach(elemento => {
-                                    elemento.style.backgroundColor = "Khaki";
-                                });
+                                for (let c = 0; c < 23; c++) {
+                                    Campos[c].style.backgroundColor = "Khaki";
+                                }
                                 obs.innerText = "Falha na recepção..";
                             };
 
@@ -410,9 +410,9 @@ async function gerartabela() {
                             };
                             // Se não possuir registros de dados na estação, estilizar com vermelho
                             if (transmissoes[e].length == 0) {
-                                Campos.forEach(elemento => {
-                                    elemento.style.backgroundColor = "FireBrick";
-                                });
+                                for (let c = 0; c < 23; c++) {
+                                    Campos[c].style.backgroundColor = "FireBrick";
+                                };
                                 obs.innerText = "Sem dados..";
                             };
                         };
