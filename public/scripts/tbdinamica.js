@@ -20,7 +20,9 @@ async function gerartabela() {
             var th1 = document.createElement("th");
             var data = Date.now();
             var hoje = new Date(data); // Obtendo dados do dia de hoje
-            var hora = hoje.getHours() + "h"; // Obtendo horário atual
+            var hora = hoje.getHours(); // Obtendo horário atual
+            if (hora < 10) hora = "0" + hora + "h";
+            if (hora >= 10) hora = hora + "h";
             th1.innerHTML = hoje.toLocaleDateString(); // Obtendo data de hoje
 
             // Formatando cabeçalho
@@ -439,4 +441,4 @@ async function gerartabela() {
         });
 };
 // Automatizar atualização da tabela
-//setInterval(gerartabela, 120000);// 2min /* 40 * 60 * 1000 40min 2400000 */
+setInterval(gerartabela, 5 * 60 * 1000);// 5min /* 40 * 60 * 1000 40min 2400000 */
